@@ -13,7 +13,7 @@
       "resolveJsonModule": true,
       "allowJs": true,
       "sourceMap": false,
-      "outDir": "./build/server",
+      "outDir": "./build",
       "strict": true,
       "noImplicitAny": false,
       "strictNullChecks": true,

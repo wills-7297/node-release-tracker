@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "pm2-runtime start ecosystem.config.js --env production",
+    "start": "npm run build && pm2-runtime start ecosystem.config.js --env production",
+    "build": "rm -rf build && tsc",
     "ls": "pm2 ls",
     "stop-server": "pm2 delete server",
     "stop-cron-job": "pm2 delete cron-job",
@@ -12,8 +13,7 @@
     "test-cron-job": "export NODE_ENV='development' && ts-node ./src/server/cron-job.ts",
     "test": "export NODE_ENV=test",
     "i": "rm -rf node_modules && npm i",
-    "pub": "npm run tsc && npm publish",
-    "build": "rm -rf build && tsc"
+    "pub": "npm run tsc && npm publish"
   },
   "author": "",
   "license": "ISC",
