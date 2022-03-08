@@ -10,6 +10,7 @@
     "stop-cron-job": "pm2 delete cron-job",
     "test-server": "export NODE_ENV='development'&& ts-node ./src/server/index.ts",
     "test-cron-job": "export NODE_ENV='development' && ts-node ./src/server/cron-job.ts",
+    "test": "export NODE_ENV=test",
     "i": "rm -rf node_modules && npm i",
     "pub": "npm run tsc && npm publish",
     "build": "rm -rf build && tsc"
