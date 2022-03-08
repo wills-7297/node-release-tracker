@@ -2,8 +2,8 @@ import axios from "axios";
 import * as requests from "./services/requests";
 import cron from "node-cron"
 
-// running a task every: dev - 1 minute, prod - 10 minutes
-const timeRange = process.env.NODE_ENV==="development" ? "1" : "10";
+// running a task every: dev - 1 minute, prod - 20 minutes
+const timeRange = process.env.NODE_ENV==="development" ? "1" : "20";
 const port = process.env.PORT || 8000;
 
 cron.schedule(`*/${timeRange} * * * *`, async () => {
