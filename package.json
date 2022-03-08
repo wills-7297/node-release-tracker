@@ -1,0 +1,38 @@
+{
+  "name": "releases",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "pm2-runtime start ecosystem.config.js --env production",
+    "ls": "pm2 ls",
+    "stop-server": "pm2 delete server",
+    "stop-cron-job": "pm2 delete cron-job",
+    "test-server": "export NODE_ENV='development'&& ts-node ./src/server/index.ts",
+    "test-cron-job": "export NODE_ENV='development' && ts-node ./src/server/cron-job.ts",
+    "i": "rm -rf node_modules && npm i",
+    "pub": "npm run tsc && npm publish",
+    "build": "rm -rf build && tsc"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.25.0",
+    "concat-stream": "^2.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "node-cron": "^3.0.0",
+    "pg": "^8.7.3",
+    "pm2": "^5.2.0",
+    "rss-parser": "^3.12.0",
+    "sqlite3": "^5.0.2",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.5"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-typescript": "^7.16.7",
+    "@types/node": "^17.0.16"
+  }
+}
