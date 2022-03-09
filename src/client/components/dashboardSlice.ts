@@ -22,15 +22,25 @@ export const addFeedProposal = createAsyncThunk(
   }
 );
 
+export const deleteFeedProposal = createAsyncThunk(
+  "delete/feed-proposal",
+  async (data) => {
+    const res = await HttpRequestClient.post("/delete/feed-proposal", data);
+    return res;
+  }
+);
+
 export const dashboardSlice = createSlice({
   name: 'dashboard',
   initialState: {
     nodeList: [],
     addFeedProposalError: "",
+    deleteFeedProposalError: "",
   },
   reducers: {
     closeErrorToast(state){
-      state.addFeedProposalError = ""
+      state.addFeedProposalError = "",
+      state.deleteFeedProposalError = ""
     },
   },
   extraReducers: (builder) => {
@@ -48,6 +58,16 @@ export const dashboardSlice = createSlice({
       })
       .addCase(addFeedProposal.rejected, (state, action) => {
         state.addFeedProposalError = action?.error?.message;
+      }),
+    builder
+      .addCase(deleteFeedProposal.fulfilled, (state, action) => {
+        const { data } = action?.payload;
+        if(data?.code !== 200){
+          state.deleteFeedProposalError = data?.message;
+        }
+      })
+      .addCase(deleteFeedProposal.rejected, (state, action) => {
+        state.deleteFeedProposalError = action?.error?.message;
       })
   },
 });

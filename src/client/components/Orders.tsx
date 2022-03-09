@@ -18,10 +18,9 @@ import Alert from '@mui/material/Alert';
 import RadioGroup from '@mui/material/RadioGroup';
 import Radio from '@mui/material/Radio';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import HttpRequestClient from "../utils/request";
+import { deleteFeedProposal } from './dashboardSlice';
 import { debounce } from "../utils/utils";
 import { useDispatch } from 'react-redux';
-import { fetchNodeList } from './dashboardSlice';
 
 const statusMap = {
   "SAME": {text: "一致", severity: "success"},
@@ -46,14 +45,8 @@ export default function Orders(props) {
 
   const handleDeleteConfirm = async ()=>{
     handleDeleteClose();
-
-    const res = await HttpRequestClient.post(
-      "/delete/feed-proposal",
-      {nodeFullName: deleteItem.node_full_name}
-    );
-    if(res?.code!==200){
-      // TODO: error alert
-    }
+    // @ts-ignore
+    dispatch(deleteFeedProposal({nodeFullName: deleteItem.node_full_name}));
   }
 
   // Edit Dialog state
@@ -72,16 +65,16 @@ export default function Orders(props) {
   const handleEditConfirm = async () => {
     handleEditClose();
 
-    const endpint = radioValue==="noupgrade" ? "/confirm/no-update" : "/confirm/waiting";
-    const res = await HttpRequestClient.post(
-      endpint,
-      {nodeName: editItem.node_name}
-    );
-    if(res?.code===200){
-      dispatch(fetchNodeList());
-    }else{
-      // TODO: error alert
-    }
+    // const endpint = radioValue==="noupgrade" ? "/confirm/no-update" : "/confirm/waiting";
+    // const res = await HttpRequestClient.post(
+    //   endpint,
+    //   {nodeName: editItem.node_name}
+    // );
+    // if(res?.code===200){
+    //   dispatch(fetchNodeList());
+    // }else{
+    //   // TODO: error alert
+    // }
   }
   const radioGroupRef = React.useRef(null);
 
