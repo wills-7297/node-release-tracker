@@ -10,6 +10,7 @@ import AddIcon from '@mui/icons-material/Add';
 import Box from '@mui/material/Box';
 import { useForm } from "react-hook-form";
 import HttpRequestClient from "../utils/request";
+import { debounce } from "../utils/utils";
 
 export default function FormDialog() {
   const [open, setOpen] = React.useState(false);
@@ -25,14 +26,13 @@ export default function FormDialog() {
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const onSubmit = async (data) => {
     console.log(data)
+    handleClose();
 
     const res = await HttpRequestClient.post(
       "/add/feed-proposal",
       data
     );
-    if(res.code===200){
-      handleClose();
-    }else{
+    if(res?.code!==200){
       // TODO: error alert
     }
   };
@@ -96,9 +96,9 @@ export default function FormDialog() {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>取消</Button>
-          <Button onClick={()=>{
+          <Button onClick={debounce(()=>{
             handleSubmit(onSubmit)();
-          }}>提交</Button>
+          })}>提交</Button>
         </DialogActions>
       </Dialog>
     </div>

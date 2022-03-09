@@ -11,7 +11,7 @@ import MenuList from '@mui/material/MenuList';
 const options = ["修改状态", "DELETE"];
 
 export default function Dropdown(props) {
-  const { item, handleAlertOpen, handleEditOpen } = props;
+  const { item, handleDeleteOpen, handleEditOpen } = props;
 
   // Dropdown state
   const [open, setOpen] = React.useState(false);
@@ -22,7 +22,7 @@ export default function Dropdown(props) {
     if(index===0){
       handleEditOpen && handleEditOpen(item);
     }else{
-      handleAlertOpen && handleAlertOpen(item);
+      handleDeleteOpen && handleDeleteOpen(item);
     }
   };
 

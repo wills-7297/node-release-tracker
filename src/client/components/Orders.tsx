@@ -19,6 +19,7 @@ import RadioGroup from '@mui/material/RadioGroup';
 import Radio from '@mui/material/Radio';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import HttpRequestClient from "../utils/request";
+import { debounce } from "../utils/utils";
 import { useDispatch } from 'react-redux';
 import { fetchNodeList } from './dashboardSlice';
 
@@ -32,25 +33,25 @@ const statusMap = {
 export default function Orders(props) {
   const { nodeList } = props;
 
-  // Alert Dialog state
-  const [alertOpen, setAlertOpen] = React.useState(false);
-  const [alertItem, setAlertItem] = React.useState({node_full_name: ""});
-  const handleAlertOpen = (item) => {
-    setAlertOpen(true);
-    setAlertItem(item);
+  // Delete Dialog state
+  const [deleteOpen, setDeleteOpen] = React.useState(false);
+  const [deleteItem, setDeleteItem] = React.useState({node_full_name: ""});
+  const handleDeleteOpen = (item) => {
+    setDeleteOpen(true);
+    setDeleteItem(item);
   }
-  const handleAlertClose = () => {
-    setAlertOpen(false);
+  const handleDeleteClose = () => {
+    setDeleteOpen(false);
   };
 
-  const handleAlertConfirm = async ()=>{
+  const handleDeleteConfirm = async ()=>{
+    handleDeleteClose();
+
     const res = await HttpRequestClient.post(
       "/delete/feed-proposal",
-      {nodeFullName: alertItem.node_full_name}
+      {nodeFullName: deleteItem.node_full_name}
     );
-    if(res?.code===200){
-      handleAlertClose();
-    }else{
+    if(res?.code!==200){
       // TODO: error alert
     }
   }
@@ -69,13 +70,14 @@ export default function Orders(props) {
 
   const dispatch = useDispatch();
   const handleEditConfirm = async () => {
+    handleEditClose();
+
     const endpint = radioValue==="noupgrade" ? "/confirm/no-update" : "/confirm/waiting";
     const res = await HttpRequestClient.post(
       endpint,
       {nodeName: editItem.node_name}
     );
     if(res?.code===200){
-      handleEditClose();
       dispatch(fetchNodeList());
     }else{
       // TODO: error alert
@@ -125,7 +127,7 @@ export default function Orders(props) {
               <TableCell>
                 <Dropdown
                   item={item}
-                  handleAlertOpen={handleAlertOpen}
+                  handleDeleteOpen={handleDeleteOpen}
                   handleEditOpen={handleEditOpen}
                 />
               </TableCell>
@@ -133,10 +135,10 @@ export default function Orders(props) {
           ))}
         </TableBody>
       </Table>
-      {/* Alert Dialog */}
+      {/* Delete Dialog */}
       <Dialog
-        open={alertOpen}
-        onClose={handleAlertClose}
+        open={deleteOpen}
+        onClose={handleDeleteClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
@@ -145,13 +147,13 @@ export default function Orders(props) {
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            您将发出删除 <b>{alertItem.node_full_name}</b> 的申请。
+            您将发出删除 <b>{deleteItem.node_full_name}</b> 的申请。
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleAlertClose}>否</Button>
+          <Button onClick={handleDeleteClose}>否</Button>
           <Button
-            onClick={handleAlertConfirm}
+            onClick={debounce(handleDeleteConfirm)}
             autoFocus
           >
             是
@@ -194,7 +196,7 @@ export default function Orders(props) {
           <Button autoFocus onClick={handleEditClose}>
             取消
           </Button>
-          <Button onClick={handleEditConfirm}>
+          <Button onClick={debounce(handleEditConfirm)}>
             确认
           </Button>
         </DialogActions>
