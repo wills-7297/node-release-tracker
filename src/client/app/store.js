@@ -5,4 +5,8 @@ export default configureStore({
   reducer: {
     dashboard: dashboardReducer
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
 });

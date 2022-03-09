@@ -16,6 +16,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { mainListItems } from './listItems';
 import Orders from './Orders';
+import ErrorToast from "./ErrorToast";
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchNodeList } from './dashboardSlice';
 
@@ -105,6 +106,7 @@ function DashboardContent() {
 
   return (
     <ThemeProvider theme={mdTheme}>
+      <ErrorToast />
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
         <AppBar position="absolute" open={open}>

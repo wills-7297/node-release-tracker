@@ -9,8 +9,9 @@ import DialogTitle from '@mui/material/DialogTitle';
 import AddIcon from '@mui/icons-material/Add';
 import Box from '@mui/material/Box';
 import { useForm } from "react-hook-form";
-import HttpRequestClient from "../utils/request";
 import { debounce } from "../utils/utils";
+import { addFeedProposal } from './dashboardSlice';
+import { useDispatch } from 'react-redux';
 
 export default function FormDialog() {
   const [open, setOpen] = React.useState(false);
@@ -24,17 +25,12 @@ export default function FormDialog() {
   };
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const dispatch = useDispatch();
   const onSubmit = async (data) => {
     console.log(data)
     handleClose();
-
-    const res = await HttpRequestClient.post(
-      "/add/feed-proposal",
-      data
-    );
-    if(res?.code!==200){
-      // TODO: error alert
-    }
+    // @ts-ignore
+    dispatch(addFeedProposal(data));
   };
 
   return (
