@@ -18,7 +18,7 @@ import Alert from '@mui/material/Alert';
 import RadioGroup from '@mui/material/RadioGroup';
 import Radio from '@mui/material/Radio';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import { deleteFeedProposal } from './dashboardSlice';
+import { deleteFeedProposal, confirmStatus } from './dashboardSlice';
 import { debounce } from "../utils/utils";
 import { useDispatch } from 'react-redux';
 
@@ -65,16 +65,9 @@ export default function Orders(props) {
   const handleEditConfirm = async () => {
     handleEditClose();
 
-    // const endpint = radioValue==="noupgrade" ? "/confirm/no-update" : "/confirm/waiting";
-    // const res = await HttpRequestClient.post(
-    //   endpint,
-    //   {nodeName: editItem.node_name}
-    // );
-    // if(res?.code===200){
-    //   dispatch(fetchNodeList());
-    // }else{
-    //   // TODO: error alert
-    // }
+    const endpoint = radioValue==="noupgrade" ? "/confirm/no-update" : "/confirm/waiting";
+    // @ts-ignore
+    dispatch(confirmStatus({nodeName: editItem.node_name, endpoint}));
   }
   const radioGroupRef = React.useRef(null);
 

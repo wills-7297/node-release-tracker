@@ -9,15 +9,6 @@ export default function PositionedSnackbar() {
 		addFeedProposalError,
 		deleteFeedProposalError,
 	} = useSelector((state: any) => state.dashboard);
-  const dispatch = useDispatch();
-	React.useEffect(() => {
-		const id = setTimeout(() => {
-			dispatch(closeErrorToast());
-		}, 5000);
-		return () => {
-			clearTimeout(id);
-		};
-  }, [addFeedProposalError, deleteFeedProposalError]);
 
 	const message = (addFeedProposalError || deleteFeedProposalError);
 

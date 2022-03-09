@@ -16,17 +16,39 @@ export const fetchNodeList = createAsyncThunk(
 
 export const addFeedProposal = createAsyncThunk(
   "add/feed-proposal",
-  async (data) => {
+  async (data, thunkAPI) => {
     const res = await HttpRequestClient.post("/add/feed-proposal", data);
+    setTimeout(() => {
+      thunkAPI.dispatch(closeErrorToast());
+    }, 5000);
     return res;
   }
 );
 
 export const deleteFeedProposal = createAsyncThunk(
   "delete/feed-proposal",
-  async (data) => {
+  async (data, thunkAPI) => {
     const res = await HttpRequestClient.post("/delete/feed-proposal", data);
+    setTimeout(() => {
+      thunkAPI.dispatch(closeErrorToast());
+    }, 5000);
     return res;
+  }
+);
+
+export const confirmStatus = createAsyncThunk(
+  "confirm/status",
+  async (data: any, thunkAPI) => {
+    const { endpoint, nodeName } = data;
+    const res = await HttpRequestClient.post(
+      endpoint,
+      {nodeName}
+    );
+    if(res?.code===200){
+      thunkAPI.dispatch(fetchNodeList());
+    }else{
+      // TODO: error alert
+    }
   }
 );
 
