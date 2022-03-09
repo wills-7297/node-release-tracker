@@ -43,6 +43,18 @@ export default function Orders(props) {
     setAlertOpen(false);
   };
 
+  const handleAlertConfirm = async ()=>{
+    const res = await HttpRequestClient.post(
+      "/delete/feed-proposal",
+      {nodeFullName: alertItem.node_full_name}
+    );
+    if(res?.code===200){
+      handleAlertClose();
+    }else{
+      // TODO: error alert
+    }
+  }
+
   // Edit Dialog state
   const [editOpen, setEditOpen] = React.useState(false);
   const [editItem, setEditItem] = React.useState({node_name: ""});
@@ -62,7 +74,7 @@ export default function Orders(props) {
       endpint,
       {nodeName: editItem.node_name}
     );
-    if(res.code===200){
+    if(res?.code===200){
       handleEditClose();
       dispatch(fetchNodeList());
     }else{
@@ -139,10 +151,7 @@ export default function Orders(props) {
         <DialogActions>
           <Button onClick={handleAlertClose}>否</Button>
           <Button
-            onClick={()=>{
-              handleAlertClose();
-              // TODO request
-            }}
+            onClick={handleAlertConfirm}
             autoFocus
           >
             是

@@ -9,6 +9,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import AddIcon from '@mui/icons-material/Add';
 import Box from '@mui/material/Box';
 import { useForm } from "react-hook-form";
+import HttpRequestClient from "../utils/request";
 
 export default function FormDialog() {
   const [open, setOpen] = React.useState(false);
@@ -22,11 +23,18 @@ export default function FormDialog() {
   };
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
-  const onSubmit = data => {
+  const onSubmit = async (data) => {
     console.log(data)
-    handleClose();
-    // TODO request
 
+    const res = await HttpRequestClient.post(
+      "/add/feed-proposal",
+      data
+    );
+    if(res.code===200){
+      handleClose();
+    }else{
+      // TODO: error alert
+    }
   };
 
   return (
@@ -47,8 +55,8 @@ export default function FormDialog() {
           >
             <div>
               <TextField
-                {...register("node_name", { required: true })}
-                error={errors?.node_name?.type==="required"}
+                {...register("nodeName", { required: true })}
+                error={errors?.nodeName?.type==="required"}
                 autoFocus
                 label="链code"
                 required
@@ -57,8 +65,8 @@ export default function FormDialog() {
                 helperText="例如: btc"
               />
               <TextField
-                {...register("node_full_name", { required: true })}
-                error={errors?.node_full_name?.type==="required"}
+                {...register("nodeFullName", { required: true })}
+                error={errors?.nodeFullName?.type==="required"}
                 label="链全称"
                 required
                 fullWidth
@@ -66,8 +74,8 @@ export default function FormDialog() {
                 helperText="例如: Bitcoin"
               />
               <TextField
-                {...register("feed_url", { required: true })}
-                error={errors?.feed_url?.type==="required"}
+                {...register("feedUrl", { required: true })}
+                error={errors?.feedUrl?.type==="required"}
                 label="github节点链接"
                 required
                 fullWidth
@@ -75,8 +83,8 @@ export default function FormDialog() {
                 helperText="例如: https://github.com/bitcoin/bitcoin/releases"
               />
               <TextField
-                {...register("lark_url", { required: true })}
-                error={errors?.lark_url?.type==="required"}
+                {...register("larkUrl", { required: true })}
+                error={errors?.larkUrl?.type==="required"}
                 label="lark链接"
                 required
                 fullWidth

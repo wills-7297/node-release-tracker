@@ -1,6 +1,8 @@
 import * as db from "../services/db";
 import * as requests from "../services/requests";
 import concat from "concat-stream";
+import axios from "axios";
+import { CORRESPONDENT_LARK_URL, generateLarkNotice } from "../utils/lark";
 
 module.exports = app => {
 	app.get("/list/subscriptions", [
@@ -13,6 +15,14 @@ module.exports = app => {
 	
 	app.post("/delete/feed", [
 		deleteFeed
+	]);
+	
+	app.post("/add/feed-proposal", [
+		addFeedProposal
+	]);
+	
+	app.post("/delete/feed-proposal", [
+		deleteFeedProposal
 	]);
 
 	app.post("/update/feed", [
@@ -86,6 +96,54 @@ async function deleteFeed(req: any, res: any){
 		concat(async data => {
 			let { feedUrls } = JSON.parse(data.toString());
 			res.send({code:200, message:"success", data: feedUrls});
+		})
+	);
+};
+
+async function addFeedProposal(req: any, res: any){
+	req.pipe(
+		concat(async data => {
+			if (data.length === 0) {
+				return res.sendStatus(400);
+			}
+			let parsed = JSON.parse(data.toString());
+			const keys = Object.keys(parsed);
+			let array: any[] = [];
+			for(let i=0; i<keys.length; i++){
+				array.push(`${keys[i]}: ${parsed[keys[i]]}`);
+			}
+			try{
+				await axios.post(
+					CORRESPONDENT_LARK_URL,
+					generateLarkNotice("申请添加链节点", array),
+				);
+
+				res.send({code:200, message:"success"});
+			}catch(error: any){
+				res.send({code: error.code, message: error});
+			}
+		})
+	);
+};
+
+async function deleteFeedProposal(req: any, res: any){
+	req.pipe(
+		concat(async data => {
+			if (data.length === 0) {
+				return res.sendStatus(400);
+			}
+			let parsed = JSON.parse(data.toString());
+			let array: any[] = [parsed.nodeFullName];
+			try{
+				await axios.post(
+					CORRESPONDENT_LARK_URL,
+					generateLarkNotice("申请删除链节点", array),
+				);
+
+				res.send({code:200, message:"success"});
+			}catch(error: any){
+				res.send({code: error.code, message: error});
+			}
 		})
 	);
 };
