@@ -39,16 +39,16 @@ export const dashboardSlice = createSlice({
       // Add user to the state array
       state.nodeList = action.payload;
     }),
-    // test reject case
-    builder.addCase(addFeedProposal.fulfilled, (state, action) => {
-      const { status, data, statusText } = action?.payload;
-      if(status !== 200){
-        state.addFeedProposalError = statusText;
-      }
-      if(data?.code !== 200){
-        state.addFeedProposalError = data?.message;
-      }
-    })
+    builder
+      .addCase(addFeedProposal.fulfilled, (state, action) => {
+        const { data } = action?.payload;
+        if(data?.code !== 200){
+          state.addFeedProposalError = data?.message;
+        }
+      })
+      .addCase(addFeedProposal.rejected, (state, action) => {
+        state.addFeedProposalError = action?.error?.message;
+      })
   },
 });
 

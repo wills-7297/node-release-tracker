@@ -10,7 +10,7 @@ export default function PositionedSnackbar(props) {
 	React.useEffect(() => {
 		setTimeout(() => {
 			dispatch(closeErrorToast());
-		}, 3000);
+		}, 5000);
   }, [addFeedProposalError]);
 
 
