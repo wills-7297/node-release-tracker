@@ -52,7 +52,7 @@ async function listSubscriptions(_, res: any){
 		const subscriptions = await db.listSubscriptions();
 		res.send({code:200, message:"success", data: subscriptions});
 	}catch(error: any){
-		res.send(error);
+		res.status(error.code).send(error);
 	}
 };
 
@@ -85,7 +85,7 @@ async function addFeed(req: any, res: any){
 					code = "404";
 					msg = "无法保存该订阅，请检查链接是否正确";
 				}
-				res.send({code, message: msg});
+				res.status(code).send({code, message: msg});
 			}
 		})
 	);
@@ -120,7 +120,7 @@ async function addFeedProposal(req: any, res: any){
 
 				res.send({code:200, message:"success"});
 			}catch(error: any){
-				res.send({code: error.code, message: error});
+				res.status(error.code).send(error);
 			}
 		})
 	);
@@ -142,7 +142,7 @@ async function deleteFeedProposal(req: any, res: any){
 
 				res.send({code:200, message:"success"});
 			}catch(error: any){
-				res.send({code: error.code, message: error});
+				res.status(error.code).send(error);
 			}
 		})
 	);
@@ -173,7 +173,7 @@ async function updateCurrentFeed(req: any, res: any){
 				await db.updateCurrentFeed(feedUrl, updateFeed, githubNodeVersion);
 				res.send({code:200, message:"success"});
 			}catch(error: any){
-				res.send({code: error.code, message:  error});
+				res.status(error.code).send(error);
 			}
 		})
 	);
@@ -215,7 +215,7 @@ async function updateOpNodeVersion(req: any, res: any){
 				res.send({code:200, message:"success"});
 
 			}catch(error: any){
-				res.send(error);
+				res.status(error.code).send(error);
 			}
 		})
 	);
@@ -232,7 +232,7 @@ async function updateNodeFullName(req: any, res: any){
 				await db.updateNodeFullName(updates);
 				res.send({code:200, message:"success"});
 			}catch(error: any){
-				res.send(error);
+				res.status(error.code).send(error);
 			}
 		})
 	);
@@ -250,7 +250,7 @@ async function confirmNoUpdate(req: any, res: any){
 				await db.updateStatus(updates, "node_name", "nodeName");
 				res.send({code:200, message:"success"});
 			}catch(error: any){
-				res.send(error);
+				res.status(error.code).send(error);
 			}
 		})
 	);
@@ -268,7 +268,7 @@ async function confirmWaiting(req: any, res: any){
 				await db.updateStatus(updates, "node_name", "nodeName");
 				res.send({code:200, message:"success"});
 			}catch(error: any){
-				res.send(error);
+				res.status(error.code).send(error);
 			}
 		})
 	);

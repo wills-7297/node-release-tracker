@@ -3,7 +3,7 @@ import * as requests from "./services/requests";
 import cron from "node-cron"
 
 // running a task every: dev - 1 minute, prod - 15 minutes
-const timeRange = process.env.NODE_ENV==="development" ? "1" : "15";
+const timeRange = process.env.NODE_ENV==="development" ? "3" : "15";
 const port = process.env.PORT || 8000;
 
 cron.schedule(`*/${timeRange} * * * *`, async () => {

@@ -8,9 +8,10 @@ export default function PositionedSnackbar() {
   const {
 		addFeedProposalError,
 		deleteFeedProposalError,
+    confirmStatusError
 	} = useSelector((state: any) => state.dashboard);
 
-	const message = (addFeedProposalError || deleteFeedProposalError);
+	const message = (addFeedProposalError || deleteFeedProposalError || confirmStatusError);
 
 	return (
     <Snackbar
