@@ -3,14 +3,21 @@ import HttpRequestClient from "../utils/request";
 
 export const fetchNodeList = createAsyncThunk(
   "fetch/nodeList",
-  async () => {
-    // TODO: handle error
+  async (_, thunkAPI) => {
+    setTimeout(() => {
+      thunkAPI.dispatch(closeErrorToast());
+    }, 5000);
     const res = await HttpRequestClient.get("/list/subscriptions");
-    const array = res?.data?.filter(ele=>ele.node_name);
-    array.sort((a, b) => {
-      return a.node_name.normalize().localeCompare(b.node_name.normalize());
-    });
-    return array;
+    if(res?.code===200){
+      const array = res?.data?.filter(ele=>ele.node_name);
+      array.sort((a, b) => {
+        return a.node_name.normalize().localeCompare(b.node_name.normalize());
+      });
+      return array;
+    }else{
+      thunkAPI.dispatch(openErrorToast(res?.data?.message));
+      return [];
+    }
   }
 );
 
@@ -80,10 +87,14 @@ export const dashboardSlice = createSlice({
   },
   extraReducers: (builder) => {
     // Add reducers for additional action types here, and handle loading state as needed
-    builder.addCase(fetchNodeList.fulfilled, (state, action) => {
-      // Add user to the state array
-      state.nodeList = action.payload;
-    }),
+    builder
+      .addCase(fetchNodeList.fulfilled, (state, action) => {
+        // Add user to the state array
+        state.nodeList = action.payload;
+      })
+      .addCase(fetchNodeList.rejected, (state, action) => {
+        state.toastError = action?.error?.message;
+      }),
     builder
       .addCase(addFeedProposal.rejected, (state, action) => {
         state.toastError = action?.error?.message;
