@@ -17,12 +17,13 @@ export const fetchNodeList = createAsyncThunk(
 export const addFeedProposal = createAsyncThunk(
   "add/feed-proposal",
   async (data, thunkAPI) => {
+    // in case request rejection 500. closeToast anyway.
+    setTimeout(() => {
+      thunkAPI.dispatch(closeErrorToast());
+    }, 5000);
     const res = await HttpRequestClient.post("/add/feed-proposal", data);
     if(res?.data?.code !== 200){
-      thunkAPI.dispatch(addFeedProposalError(res?.data?.message));
-      setTimeout(() => {
-        thunkAPI.dispatch(closeErrorToast());
-      }, 5000);
+      thunkAPI.dispatch(openErrorToast(res?.data?.message));
     }
     return res;
   }
@@ -31,12 +32,12 @@ export const addFeedProposal = createAsyncThunk(
 export const deleteFeedProposal = createAsyncThunk(
   "delete/feed-proposal",
   async (data, thunkAPI) => {
+    setTimeout(() => {
+      thunkAPI.dispatch(closeErrorToast());
+    }, 5000);
     const res = await HttpRequestClient.post("/delete/feed-proposal", data);
     if(res?.data?.code !== 200){
-      thunkAPI.dispatch(deleteFeedProposalError(res?.data?.message));
-      setTimeout(() => {
-        thunkAPI.dispatch(closeErrorToast());
-      }, 5000);
+      thunkAPI.dispatch(openErrorToast(res?.data?.message));
     }
     return res;
   }
@@ -45,6 +46,9 @@ export const deleteFeedProposal = createAsyncThunk(
 export const confirmStatus = createAsyncThunk(
   "confirm/status",
   async (data: any, thunkAPI) => {
+    setTimeout(() => {
+      thunkAPI.dispatch(closeErrorToast());
+    }, 5000);
     const { endpoint, nodeName } = data;
     const res = await HttpRequestClient.post(
       endpoint,
@@ -54,10 +58,7 @@ export const confirmStatus = createAsyncThunk(
     if(res?.code===200){
       thunkAPI.dispatch(fetchNodeList());
     }else{
-      thunkAPI.dispatch(confirmStatusError(res?.data?.message));
-      setTimeout(() => {
-        thunkAPI.dispatch(closeErrorToast());
-      }, 5000);
+      thunkAPI.dispatch(openErrorToast(res?.data?.message));
     }
     return res;
   }
@@ -67,24 +68,14 @@ export const dashboardSlice = createSlice({
   name: 'dashboard',
   initialState: {
     nodeList: [],
-    addFeedProposalError: "",
-    deleteFeedProposalError: "",
-    confirmStatusError: "",
+    toastError: "",
   },
   reducers: {
     closeErrorToast(state){
-      state.addFeedProposalError = "",
-      state.deleteFeedProposalError = "",
-      state.confirmStatusError = ""
+      state.toastError = "";
     },
-    addFeedProposalError(state, action){
-      state.addFeedProposalError = action.payload;
-    },
-    deleteFeedProposalError(state, action){
-      state.deleteFeedProposalError = action.payload;
-    },
-    confirmStatusError(state, action){
-      state.confirmStatusError = action.payload;
+    openErrorToast(state, action){
+      state.toastError = action.payload;
     }
   },
   extraReducers: (builder) => {
@@ -95,22 +86,22 @@ export const dashboardSlice = createSlice({
     }),
     builder
       .addCase(addFeedProposal.rejected, (state, action) => {
-        state.addFeedProposalError = action?.error?.message;
+        state.toastError = action?.error?.message;
       }),
     builder
       .addCase(deleteFeedProposal.rejected, (state, action) => {
-        state.deleteFeedProposalError = action?.error?.message;
+        state.toastError = action?.error?.message;
       }),
     builder
       .addCase(confirmStatus.rejected, (state, action) => {
-        state.deleteFeedProposalError = action?.error?.message;
+        state.toastError = action?.error?.message;
       })
   },
 });
 
 // Action creators are generated for each case reducer function
 export const {
-  closeErrorToast, addFeedProposalError, deleteFeedProposalError, confirmStatusError
+  closeErrorToast, openErrorToast
 } = dashboardSlice.actions;
 
 export default dashboardSlice.reducer;

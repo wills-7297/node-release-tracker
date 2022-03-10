@@ -1,26 +1,21 @@
 import * as React from 'react';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
-import { useSelector, useDispatch } from 'react-redux';
-import { closeErrorToast } from './dashboardSlice';
+import { useSelector } from 'react-redux';
 
 export default function PositionedSnackbar() {
   const {
-		addFeedProposalError,
-		deleteFeedProposalError,
-    confirmStatusError
+    toastError
 	} = useSelector((state: any) => state.dashboard);
-
-	const message = (addFeedProposalError || deleteFeedProposalError || confirmStatusError);
 
 	return (
     <Snackbar
         anchorOrigin={{ vertical: "top", horizontal: "center" }}
-        open={!!message}
+        open={!!toastError}
         key={Math.random()}
     >
 			<Alert severity="error">
-          {message}
+          {toastError}
       </Alert>
 		</Snackbar>
   );
