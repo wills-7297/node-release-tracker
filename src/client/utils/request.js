@@ -23,11 +23,6 @@ function constructHeader(headers) {
     };
 }
 
-const handleError = async (error) => {
-    console.log(error)
-    return error;
-}
-
 module.exports = {
     get: async (endpoint) => {
         const resp = await axios.get(
@@ -36,11 +31,7 @@ module.exports = {
                 // headers: constructHeader(headers)
             }
         );
-        if(resp?.status !== 200 || resp?.data?.code !== 200) {
-            handleError(resp);
-        }else{
-            return resp.data;
-        }
+        return resp;
     },
     post: async (endpoint, data) => {
         const resp = await axios.post(
@@ -50,10 +41,6 @@ module.exports = {
                 // headers: constructHeader(headers)
             }
         );
-        if(resp?.status !== 200 || resp?.data?.code !== 200) {
-            handleError(resp);
-        }else{
-            return resp.data;
-        }
+        return resp;
     }
 };

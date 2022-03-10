@@ -8,8 +8,8 @@ export const fetchNodeList = createAsyncThunk(
       thunkAPI.dispatch(closeErrorToast());
     }, 5000);
     const res = await HttpRequestClient.get("/list/subscriptions");
-    if(res?.code===200){
-      const array = res?.data?.filter(ele=>ele.node_name);
+    if(res?.data?.code===200){
+      const array = res?.data.data?.filter(ele=>ele.node_name);
       array.sort((a, b) => {
         return a.node_name.normalize().localeCompare(b.node_name.normalize());
       });
@@ -62,7 +62,7 @@ export const confirmStatus = createAsyncThunk(
       {nodeName}
     );
     // no side-effects inside reducers
-    if(res?.code===200){
+    if(res?.data.code===200){
       thunkAPI.dispatch(fetchNodeList());
     }else{
       thunkAPI.dispatch(openErrorToast(res?.data?.message));
