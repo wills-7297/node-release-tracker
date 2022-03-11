@@ -1,5 +1,4 @@
 const axios = require("axios").default;
-const port = process.env.PORT || 3000;
 
 function constructHeader(headers) {
     if (!headers) {
@@ -26,7 +25,7 @@ function constructHeader(headers) {
 module.exports = {
     get: async (endpoint) => {
         const resp = await axios.get(
-            `http://localhost:${port}${endpoint}`,
+            `http://10.155.11.115:8300${endpoint}`,
             {
                 // headers: constructHeader(headers)
             }
@@ -35,7 +34,7 @@ module.exports = {
     },
     post: async (endpoint, data) => {
         const resp = await axios.post(
-            `http://localhost:${port}${endpoint}`,
+            `http://10.155.11.115:8300${endpoint}`,
             data,
             {
                 // headers: constructHeader(headers)
