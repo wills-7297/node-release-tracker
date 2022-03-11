@@ -22,24 +22,37 @@ function constructHeader(headers) {
     };
 }
 
+const handleError = async (error) => {
+    console.log(error)
+    return error;
+}
+
 module.exports = {
     get: async (endpoint) => {
         const resp = await axios.get(
-            `http://10.155.11.115:8300${endpoint}`,
+            `http://10.155.11.115:8300/${endpoint}`,
             {
                 // headers: constructHeader(headers)
             }
         );
-        return resp;
+        if(resp?.status !== 200 || resp?.data?.code !== 200) {
+            handleError(resp);
+        }else{
+            return resp.data;
+        }
     },
     post: async (endpoint, data) => {
         const resp = await axios.post(
-            `http://10.155.11.115:8300${endpoint}`,
+            `http://10.155.11.115:8300/${endpoint}`,
             data,
             {
                 // headers: constructHeader(headers)
             }
         );
-        return resp;
+        if(resp?.status !== 200 || resp?.data?.code !== 200) {
+            handleError(resp);
+        }else{
+            return resp.data;
+        }
     }
 };
