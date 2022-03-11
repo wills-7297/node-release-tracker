@@ -24,7 +24,7 @@ export default function FormDialog() {
     setOpen(false);
   };
 
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm();
   const dispatch = useDispatch();
   const onSubmit = async (data) => {
     console.log(data)

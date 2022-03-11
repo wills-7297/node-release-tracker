@@ -1,5 +1,5 @@
 const axios = require("axios").default;
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 3000;
 
 function constructHeader(headers) {
     if (!headers) {

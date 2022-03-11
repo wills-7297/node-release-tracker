@@ -17,7 +17,7 @@ export default function Dropdown(props) {
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
 
-  const handleMenuItemClick = (event, index) => {
+  const handleMenuItemClick = (_, index) => {
     setOpen(false);
     if(index===0){
       handleEditOpen && handleEditOpen(item);
@@ -31,6 +31,7 @@ export default function Dropdown(props) {
   };
 
   const handleClose = (event) => {
+    // @ts-ignore
     if (anchorRef.current && anchorRef.current.contains(event.target)) {
       return;
     }

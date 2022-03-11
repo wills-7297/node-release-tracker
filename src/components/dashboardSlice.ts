@@ -94,18 +94,22 @@ export const dashboardSlice = createSlice({
         state.nodeList = action.payload;
       })
       .addCase(fetchNodeList.rejected, (state, action) => {
+        // @ts-ignore
         state.toastError = action?.error?.message;
       }),
     builder
       .addCase(addFeedProposal.rejected, (state, action) => {
+        // @ts-ignore
         state.toastError = action?.error?.message;
       }),
     builder
       .addCase(deleteFeedProposal.rejected, (state, action) => {
+        // @ts-ignore
         state.toastError = action?.error?.message;
       }),
     builder
       .addCase(confirmStatus.rejected, (state, action) => {
+        // @ts-ignore
         state.toastError = action?.error?.message;
       })
   },

@@ -1,10 +1,10 @@
 import axios from "axios";
 import * as requests from "./services/requests";
-import cron from "node-cron"
+import cron from "node-cron";
 
 // running a task every: dev - 1 minute, prod - 15 minutes
 const timeRange = process.env.NODE_ENV==="development" ? "3" : "15";
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 3000;
 
 cron.schedule(`*/${timeRange} * * * *`, async () => {
     // 生产: 每隔10分钟循环从数据库中获取列表
@@ -12,7 +12,7 @@ cron.schedule(`*/${timeRange} * * * *`, async () => {
 });
 
 // 更新当前feed_url最新的current_feed
-async function updateCurrentFeed(feed_url: string, updateFeed: any){
+async function updateCurrentFeed(feed_url, updateFeed){
 	const array = updateFeed?.link?.split("/");
 	let githubNodeVersion = array?.[array?.length-1];
 	if(githubNodeVersion.substring(0,1).toLowerCase()==="v"){
@@ -29,7 +29,7 @@ async function main() {
     const res = await axios.get(
 		`http://127.0.0.1:${port}/api/list/subscriptions`
 	);
-	const subscriptions: any = res.data.data;
+	const subscriptions = res.data.data;
 	console.log(subscriptions.length);
 
 	for (let i = 0; i < subscriptions.length; i++) {

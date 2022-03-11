@@ -1,6 +1,14 @@
+# dependencies
 package-lock.json
 node_modules
+
+# misc
 .DS_Store
-mock-data.js
 logs
-build
+
+# next.js
+.next
+/out/
+
+# production
+/build
