@@ -19,7 +19,7 @@ async function updateCurrentFeed(feed_url: string, updateFeed: any){
 		githubNodeVersion = githubNodeVersion.substring(1);
 	}
 	await axios.post(
-		`http://127.0.0.1:${port}/update/feed`,
+		`http://127.0.0.1:${port}/api/update/feed`,
 		{feedUrl: feed_url, updateFeed, githubNodeVersion},
 	);
 };
@@ -27,7 +27,7 @@ async function updateCurrentFeed(feed_url: string, updateFeed: any){
 async function main() {
 
     const res = await axios.get(
-		`http://127.0.0.1:${port}/list/subscriptions`
+		`http://127.0.0.1:${port}/api/list/subscriptions`
 	);
 	const subscriptions: any = res.data.data;
 	console.log(subscriptions.length);

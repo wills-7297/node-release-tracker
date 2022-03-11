@@ -65,9 +65,8 @@ export default function Orders(props) {
   const handleEditConfirm = async () => {
     handleEditClose();
 
-    const endpoint = radioValue==="noupgrade" ? "/confirm/no-update" : "/confirm/waiting";
     // @ts-ignore
-    dispatch(confirmStatus({nodeName: editItem.node_name, endpoint}));
+    dispatch(confirmStatus({nodeName: editItem.node_name, radioValue}));
   }
   const radioGroupRef = React.useRef(null);
 

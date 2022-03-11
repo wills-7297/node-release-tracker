@@ -5,43 +5,43 @@ import axios from "axios";
 import { CORRESPONDENT_LARK_URL, generateLarkNotice } from "../utils/lark";
 
 module.exports = app => {
-	app.get("/list/subscriptions", [
+	app.get("/api/list/subscriptions", [
 		listSubscriptions
 	]);
 
-	app.post("/add/feed", [
+	app.post("/api/add/feed", [
 		addFeed
 	]);
 	
-	app.post("/delete/feed", [
+	app.post("/api/delete/feed", [
 		deleteFeed
 	]);
 	
-	app.post("/add/feed-proposal", [
+	app.post("/api/add/feed-proposal", [
 		addFeedProposal
 	]);
 	
-	app.post("/delete/feed-proposal", [
+	app.post("/api/delete/feed-proposal", [
 		deleteFeedProposal
 	]);
 
-	app.post("/update/feed", [
+	app.post("/api/update/feed", [
 		updateCurrentFeed
 	]);
 	
-	app.post("/update/node-versions", [
+	app.post("/api/update/node-versions", [
 		updateOpNodeVersion
 	]);
 
-	app.post("/update/node-fullnames", [
+	app.post("/api/update/node-fullnames", [
 		updateNodeFullName
 	]);
 
-	app.post("/confirm/no-update", [
+	app.post("/api/confirm/no-update", [
 		confirmNoUpdate
 	]);
 
-	app.post("/confirm/waiting", [
+	app.post("/api/confirm/waiting", [
 		confirmWaiting
 	]);
 };

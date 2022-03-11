@@ -26,7 +26,7 @@ function constructHeader(headers) {
 module.exports = {
     get: async (endpoint) => {
         const resp = await axios.get(
-            `http://127.0.0.1:${port}${endpoint}`,
+            `http://localhost:${port}${endpoint}`,
             {
                 // headers: constructHeader(headers)
             }
@@ -35,7 +35,7 @@ module.exports = {
     },
     post: async (endpoint, data) => {
         const resp = await axios.post(
-            `http://127.0.0.1:${port}${endpoint}`,
+            `http://localhost:${port}${endpoint}`,
             data,
             {
                 // headers: constructHeader(headers)

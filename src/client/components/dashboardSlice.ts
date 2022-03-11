@@ -7,7 +7,7 @@ export const fetchNodeList = createAsyncThunk(
     setTimeout(() => {
       thunkAPI.dispatch(closeErrorToast());
     }, 5000);
-    const res = await HttpRequestClient.get("/list/subscriptions");
+    const res = await HttpRequestClient.get("/api/list/subscriptions");
     if(res?.data?.code===200){
       const array = res?.data.data?.filter(ele=>ele.node_name);
       array.sort((a, b) => {
@@ -28,7 +28,7 @@ export const addFeedProposal = createAsyncThunk(
     setTimeout(() => {
       thunkAPI.dispatch(closeErrorToast());
     }, 5000);
-    const res = await HttpRequestClient.post("/add/feed-proposal", data);
+    const res = await HttpRequestClient.post("/api/add/feed-proposal", data);
     if(res?.data?.code !== 200){
       thunkAPI.dispatch(openErrorToast(res?.data?.message));
     }
@@ -42,7 +42,7 @@ export const deleteFeedProposal = createAsyncThunk(
     setTimeout(() => {
       thunkAPI.dispatch(closeErrorToast());
     }, 5000);
-    const res = await HttpRequestClient.post("/delete/feed-proposal", data);
+    const res = await HttpRequestClient.post("/api/delete/feed-proposal", data);
     if(res?.data?.code !== 200){
       thunkAPI.dispatch(openErrorToast(res?.data?.message));
     }
@@ -56,7 +56,8 @@ export const confirmStatus = createAsyncThunk(
     setTimeout(() => {
       thunkAPI.dispatch(closeErrorToast());
     }, 5000);
-    const { endpoint, nodeName } = data;
+    const { radioValue, nodeName } = data;
+    const endpoint = radioValue==="noupgrade" ? "/api/confirm/no-update" : "/api/confirm/waiting";
     const res = await HttpRequestClient.post(
       endpoint,
       {nodeName}
