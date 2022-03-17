@@ -1,10 +1,6 @@
 import * as React from 'react';
 import Link from '@mui/material/Link';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
+import { DataGrid } from '@mui/x-data-grid';
 import Title from './Title';
 import Button from '@mui/material/Button';
 import Dropdown from "./Dropdown";
@@ -70,58 +66,144 @@ export default function Orders(props) {
   }
   const radioGroupRef = React.useRef(null);
 
+  // function selectionInputValue(props) {
+  //   const { item, applyValue, focusElementRef } = props;
+  
+  //   const ratingRef = React.useRef(null);
+  //   React.useImperativeHandle(focusElementRef, () => ({
+  //     focus: () => {
+  //       ratingRef.current
+  //         .querySelector(`input[value="${Number(item.value) || ''}"]`)
+  //         .focus();
+  //     },
+  //   }));
+  
+  //   const handleFilterChange = (event) => {
+  //     applyValue({ ...item, value: event.target.value });
+  //   };
+  
+  //   return (
+  //     <Box
+  //       sx={{
+  //         display: 'inline-flex',
+  //         flexDirection: 'row',
+  //         alignItems: 'center',
+  //         height: 48,
+  //         pl: '20px',
+  //       }}
+  //     >
+  //       <Rating
+  //         name="custom-rating-filter-operator"
+  //         placeholder="Filter value"
+  //         value={Number(item.value)}
+  //         onChange={handleFilterChange}
+  //         precision={0.5}
+  //         ref={ratingRef}
+  //       />
+  //     </Box>
+  //   );
+  // }
+
+  // const selectionOperator = [
+  //   {
+  //     label: 'equals',
+  //     value: 'equal',
+  //     getApplyFilterFn: (filterItem) => {
+  //       if (
+  //         !filterItem.columnField ||
+  //         !filterItem.value ||
+  //         !filterItem.operatorValue
+  //       ) {
+  //         return null;
+  //       }
+  
+  //       return (params) => {
+  //         return params.value === filterItem.value;
+  //       };
+  //     },
+  //     InputComponent: selectionInputValue,
+  //     InputComponentProps: { type: 'string' },
+  //   },
+  // ];
+
+  const columns = [
+    { field: 'node_name', headerName: '链', minWidth: 120 },
+    { field: 'node_full_name', headerName: '链全称', minWidth: 130 },
+    { field: 'op_node_version', headerName: '运维版本', minWidth: 130 },
+    {
+      field: 'github_node_version',
+      headerName: 'github最新版本',
+      minWidth: 160,
+      renderCell: (params) => (
+        <Link
+          target="_blank"
+          color="inherit"
+          href={params.row.feed_url.substring(0, params.row.feed_url.length-5)}
+        >
+          {params.value}
+        </Link>
+      )
+    },
+    { field: 'handler', headerName: '维护人', minWidth: 120 },
+    {
+      field: 'github_release_date',
+      headerName: 'github发布时间',
+      minWidth: 160,
+      type: 'date',
+      valueGetter: (params) => {
+        const value = params.row.current_feed;
+        let currentFeed = value ? JSON.parse(value) : {};
+        const date = new Date(currentFeed.pubDate);
+        return date;
+      }
+    },
+    {
+      field: 'status',
+      headerName: '状态',
+      minWidth: 200,
+      // filterOperators: selectionOperator,
+      renderCell: (params) => {
+        console.log(params)
+        return (
+          <Alert
+            severity={statusMap[params.value]?.severity || "warning"}
+            style={{padding: "0px 10px"}}
+          >
+            {statusMap[params.value]?.text || "无状态"}
+          </Alert>
+        )
+      }
+    },
+    {
+      field: "actions",
+      type: "actions",
+      renderHeader: () => (
+        <AddForm />
+      ),
+      getActions: (params) => [
+        <Dropdown
+          item={params.row}
+          handleDeleteOpen={handleDeleteOpen}
+          handleEditOpen={handleEditOpen}
+        />
+      ]
+    },
+  ];
+
+  console.log(nodeList)
+
   return (
     <React.Fragment>
       <Title>节点版本</Title>
-      <Table size="small">
-        <TableHead>
-          <TableRow>
-            <TableCell>链</TableCell>
-            <TableCell>链全称</TableCell>
-            <TableCell>运维版本</TableCell>
-            <TableCell>github最新版本</TableCell>
-            <TableCell>维护人</TableCell>
-            <TableCell>状态</TableCell>
-            <TableCell>
-              <AddForm />
-            </TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {nodeList.map((item) => (
-            <TableRow key={item.feed_url}>
-              <TableCell>{item.node_name}</TableCell>
-              <TableCell>{item.node_full_name}</TableCell>
-              <TableCell>{item.op_node_version}</TableCell>
-              <TableCell>
-                <Link
-                  target="_blank"
-                  color="inherit"
-                  href={item.feed_url.substring(0, item.feed_url.length-5)}
-                >
-                  {item.github_node_version}
-                </Link>
-              </TableCell>
-              <TableCell>{item.handler}</TableCell>
-              <TableCell>
-                <Alert
-                  severity={statusMap[item.status]?.severity || "warning"}
-                  style={{padding: "0px 10px"}}
-                >
-                  {statusMap[item.status]?.text || "无状态"}
-                </Alert>
-              </TableCell>
-              <TableCell>
-                <Dropdown
-                  item={item}
-                  handleDeleteOpen={handleDeleteOpen}
-                  handleEditOpen={handleEditOpen}
-                />
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+      <div style={{ height: 600, width: '100%' }}>
+        <DataGrid
+          rows={nodeList}
+          getRowId={(row)=> row.feed_url}
+          columns={columns}
+          pageSize={10}
+          rowsPerPageOptions={[10]}
+        />
+      </div>
       {/* Delete Dialog */}
       <Dialog
         open={deleteOpen}
