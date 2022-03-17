@@ -79,6 +79,15 @@ export default function FormDialog() {
                 helperText="例如: https://github.com/bitcoin/bitcoin/releases"
               />
               <TextField
+                {...register("handler", { required: true })}
+                error={errors?.larkUrl?.type==="required"}
+                label="维护人"
+                required
+                fullWidth
+                variant="standard"
+                helperText="例如: stone"
+              />
+              <TextField
                 {...register("larkUrl", { required: true })}
                 error={errors?.larkUrl?.type==="required"}
                 label="lark链接"

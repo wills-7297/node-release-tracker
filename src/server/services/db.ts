@@ -70,11 +70,11 @@ export async function filterSubscriptions(column, criteria) {
     return rows;
 };
 
-export async function subscribe(feedUrl: string, larkUrl: string, nodeName: string, nodeFullName: string) {
+export async function subscribe(feedUrl: string, larkUrl: string, nodeName: string, nodeFullName: string, handler: string) {
     if(!feedUrl || !larkUrl) throw Error("缺少入参");
     const res = await db_run(
-        `INSERT INTO ${tableName}(feed_url, lark_url, node_name, node_full_name) VALUES (?, ?, ?, ?)`,
-        [feedUrl, larkUrl, nodeName, nodeFullName]
+        `INSERT INTO ${tableName}(feed_url, lark_url, node_name, node_full_name, handler) VALUES (?, ?, ?, ?, ?)`,
+        [feedUrl, larkUrl, nodeName, nodeFullName, handler]
     );
     return res;
 };

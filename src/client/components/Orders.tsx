@@ -80,6 +80,7 @@ export default function Orders(props) {
             <TableCell>链全称</TableCell>
             <TableCell>运维版本</TableCell>
             <TableCell>github最新版本</TableCell>
+            <TableCell>维护人</TableCell>
             <TableCell>状态</TableCell>
             <TableCell>
               <AddForm />
@@ -101,6 +102,7 @@ export default function Orders(props) {
                   {item.github_node_version}
                 </Link>
               </TableCell>
+              <TableCell>{item.handler}</TableCell>
               <TableCell>
                 <Alert
                   severity={statusMap[item.status]?.severity || "warning"}

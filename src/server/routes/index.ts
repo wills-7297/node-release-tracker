@@ -71,10 +71,10 @@ async function addFeed(req: any, res: any){
 			let { larkUrl, feedUrls } = JSON.parse(data.toString());
 			try{
 				for(let i=0; i<feedUrls.length; i++){
-					const {feedUrl, nodeName, nodeFullName} = feedUrls[i];
+					const {feedUrl, nodeName, nodeFullName, handler} = feedUrls[i];
 					// 若是非法地址，无法获取feed，抛错404
 					await requests.getRssFeed(feedUrl);
-					await db.subscribe(feedUrl, larkUrl, nodeName, nodeFullName);
+					await db.subscribe(feedUrl, larkUrl, nodeName, nodeFullName, handler);
 				}
 				res.send({code:200, message:"success"});
 			}catch(error: any){
