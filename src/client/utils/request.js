@@ -27,10 +27,12 @@ const handleError = async (error) => {
     return error;
 }
 
+const host = process.env.NODE_ENV==="development" ?  "http://localhost:8000" : "http://10.155.11.115:8300";
+
 module.exports = {
     get: async (endpoint) => {
         const resp = await axios.get(
-            `http://10.155.11.115:8300${endpoint}`,
+            `${host}${endpoint}`,
             {
                 // headers: constructHeader(headers)
             }
@@ -43,7 +45,7 @@ module.exports = {
     },
     post: async (endpoint, data) => {
         const resp = await axios.post(
-            `http://10.155.11.115:8300${endpoint}`,
+            `${host}${endpoint}`,
             data,
             {
                 // headers: constructHeader(headers)

@@ -13,6 +13,7 @@ const tableName = "local";
  * github_node_version: TEXT, github节点版本
  * op_node_version: TEXT, 运维节点版本
  * status: TEXT, "SAME", "UNCONFIRMED", "CONFIRMED", "WAITING"
+ * handler: TEXT
  */
 
 async function db_run(query: string, params?: string[]){
@@ -49,7 +50,8 @@ export async function init(){
             current_feed TEXT,
             github_node_version TEXT,
             op_node_version TEXT,
-            status TEXT
+            status TEXT,
+            handler TEXT
         )`
     );
 }
@@ -134,7 +136,21 @@ export async function updateStatus(array: any[], column, criteria) {
     }
 
     return;
-}
+};
+
+export async function updateHandler(array: any[]) {
+    var statement = db.prepare(
+        `UPDATE ${tableName} SET handler = ?
+        WHERE node_name=?`
+    );
+
+    for (var i = 0; i < array.length; i++) {
+        const item = array[i];
+        statement.run(item.handler, item.nodeName);
+    }
+
+    return;
+};
 
 export async function deleteTable(tableName: string) {
     const res = await db_run(

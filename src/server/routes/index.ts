@@ -44,6 +44,12 @@ module.exports = app => {
 	app.post("/api/confirm/waiting", [
 		confirmWaiting
 	]);
+
+	app.post("/api/update/handler", [
+		updateHandler
+	]);
+
+	
 };
 
 
@@ -274,3 +280,19 @@ async function confirmWaiting(req: any, res: any){
 	);
 };
 
+async function updateHandler(req: any, res: any){
+	req.pipe(
+		concat(async data => {
+			if (data.length === 0) {
+				return res.sendStatus(400);
+			}
+			let updates = JSON.parse(data.toString());
+			try{
+				await db.updateHandler(updates);
+				res.send({code:200, message:"success"});
+			}catch(error: any){
+				res.send(error);
+			}
+		})
+	);
+};
