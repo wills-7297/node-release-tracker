@@ -93,6 +93,26 @@ async function main() {
 											],
 											[
 												{
+													"tag": "a",
+													"text": "ITSM",
+													"href": "https://itsm-yi.go.akamai-access.com/#/index",
+												},
+											],
+											[
+												{
+													"tag": "a",
+													"text": "Monitor Dashboard",
+													"href": "http://10.155.11.115:8300/",
+												},
+											],
+											[
+												{
+													"tag": "text",
+													"text": "",
+												},
+											],
+											[
+												{
 													"tag": "text",
 													"text": updatedFeeds[k].contentSnippet
 												}
