@@ -136,7 +136,7 @@ export default function Orders(props) {
     },
   ];
 
-  console.log(nodeList)
+  // console.log(nodeList)
 
   return (
     <React.Fragment>
