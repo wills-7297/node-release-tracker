@@ -72,7 +72,7 @@ export default function Dropdown(props) {
                 <MenuList id="split-button-menu">
                   {options.map((option, index) => (
                     <MenuItem
-                      disabled={index===0 && item.status!=="UNCONFIRMED"}
+                      disabled={index===0 && JSON.parse(item.status).value!=="UNCONFIRMED"}
                       key={option}
                       onClick={(event) => {
                         handleMenuItemClick(event, index)

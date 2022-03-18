@@ -18,11 +18,10 @@ import { deleteFeedProposal, confirmStatus } from './dashboardSlice';
 import { debounce } from "../utils/utils";
 import { useDispatch } from 'react-redux';
 
-const statusMap = {
-  "SAME": {text: "一致", severity: "success"},
-  "UNCONFIRMED": {text: "未确认", severity: "error"},
-  "CONFIRMED": {text: "已确认 - 不需升级", severity: "success"},
-  "WAITING": {text: "已确认 - 待处理", severity: "warning"},
+const severityMap = {
+  "low" : "success",
+  "medium" : "warning",
+  "high" : "error",
 };
 
 export default function Orders(props) {
@@ -66,66 +65,6 @@ export default function Orders(props) {
   }
   const radioGroupRef = React.useRef(null);
 
-  // function selectionInputValue(props) {
-  //   const { item, applyValue, focusElementRef } = props;
-  
-  //   const ratingRef = React.useRef(null);
-  //   React.useImperativeHandle(focusElementRef, () => ({
-  //     focus: () => {
-  //       ratingRef.current
-  //         .querySelector(`input[value="${Number(item.value) || ''}"]`)
-  //         .focus();
-  //     },
-  //   }));
-  
-  //   const handleFilterChange = (event) => {
-  //     applyValue({ ...item, value: event.target.value });
-  //   };
-  
-  //   return (
-  //     <Box
-  //       sx={{
-  //         display: 'inline-flex',
-  //         flexDirection: 'row',
-  //         alignItems: 'center',
-  //         height: 48,
-  //         pl: '20px',
-  //       }}
-  //     >
-  //       <Rating
-  //         name="custom-rating-filter-operator"
-  //         placeholder="Filter value"
-  //         value={Number(item.value)}
-  //         onChange={handleFilterChange}
-  //         precision={0.5}
-  //         ref={ratingRef}
-  //       />
-  //     </Box>
-  //   );
-  // }
-
-  // const selectionOperator = [
-  //   {
-  //     label: 'equals',
-  //     value: 'equal',
-  //     getApplyFilterFn: (filterItem) => {
-  //       if (
-  //         !filterItem.columnField ||
-  //         !filterItem.value ||
-  //         !filterItem.operatorValue
-  //       ) {
-  //         return null;
-  //       }
-  
-  //       return (params) => {
-  //         return params.value === filterItem.value;
-  //       };
-  //     },
-  //     InputComponent: selectionInputValue,
-  //     InputComponentProps: { type: 'string' },
-  //   },
-  // ];
-
   const columns = [
     { field: 'node_name', headerName: '链', minWidth: 120 },
     { field: 'node_full_name', headerName: '链全称', minWidth: 130 },
@@ -161,15 +100,22 @@ export default function Orders(props) {
       field: 'status',
       headerName: '状态',
       minWidth: 200,
-      // filterOperators: selectionOperator,
+      type: "singleSelect",
+      valueOptions: [
+        {value: "{\"value\":\"SAME\",\"label\":\"一致\",\"severity\":\"low\"}", label: "一致"},
+        {value: "{\"value\":\"UNCONFIRMED\",\"label\":\"未确认\",\"severity\":\"high\"}", label: "未确认"},
+        {value: "{\"value\":\"CONFIRMED\",\"label\":\"已确认 - 不需升级\",\"severity\":\"low\"}", label: "已确认 - 不需升级"},
+        {value: "{\"value\":\"WAITING\",\"label\":\"已确认 - 待处理\",\"severity\":\"medium\"}", label: "已确认 - 待处理"},
+      ],
       renderCell: (params) => {
-        console.log(params)
+        const value = params?.value;
+        const status = value ? JSON.parse(value): {};
         return (
           <Alert
-            severity={statusMap[params.value]?.severity || "warning"}
+            severity={severityMap[status?.severity] || "warning"}
             style={{padding: "0px 10px"}}
           >
-            {statusMap[params.value]?.text || "无状态"}
+            {status?.label || "无状态"}
           </Alert>
         )
       }

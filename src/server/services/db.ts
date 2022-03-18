@@ -3,6 +3,13 @@ const db = new sqlite3.Database('local_db');
 
 const tableName = "local";
 
+const statusMap = {
+    "SAME": {value: "SAME", label: "一致", severity: "low"},
+    "UNCONFIRMED": {value: "UNCONFIRMED", label: "未确认", severity: "high"},
+    "CONFIRMED": {value: "CONFIRMED", label: "已确认 - 不需升级", severity: "low"},
+    "WAITING": {value: "WAITING", label: "已确认 - 待处理", severity: "medium"},
+};
+
 /**
  * 数据库表结构：
  * feed_url: TEXT
@@ -12,7 +19,7 @@ const tableName = "local";
  * current_feed: TEXT
  * github_node_version: TEXT, github节点版本
  * op_node_version: TEXT, 运维节点版本
- * status: TEXT, "SAME", "UNCONFIRMED", "CONFIRMED", "WAITING"
+ * status: TEXT, 参考statusMap
  * handler: TEXT
  */
 
@@ -132,7 +139,8 @@ export async function updateStatus(array: any[], column, criteria) {
 
     for (var i = 0; i < array.length; i++) {
         const item = array[i];
-        statement.run(item.status, item[`${criteria}`]);
+        const value = JSON.stringify(statusMap[item.status]);
+        statement.run(value, item[`${criteria}`]);
     }
 
     return;
