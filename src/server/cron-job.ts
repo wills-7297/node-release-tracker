@@ -102,7 +102,7 @@ async function main() {
 												{
 													"tag": "a",
 													"text": "Monitor Dashboard",
-													"href": "http://10.155.11.115:8300/",
+													"href": "https://soul-version.go.akamai-access.com/",
 												},
 											],
 											[

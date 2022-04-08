@@ -27,7 +27,7 @@ const handleError = async (error) => {
     return error;
 }
 
-const host = process.env.NODE_ENV==="development" ?  "http://localhost:8000" : "http://10.155.11.115:8300";
+const host = process.env.NODE_ENV==="development" ?  "http://localhost:8000" : "https://soul-version.go.akamai-access.com";
 
 module.exports = {
     get: async (endpoint) => {
