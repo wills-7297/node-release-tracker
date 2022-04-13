@@ -141,13 +141,13 @@ export default function Orders(props) {
   return (
     <React.Fragment>
       <Title>节点版本</Title>
-      <div style={{ height: 600, width: '100%' }}>
+      <div style={{ height: "75vh", width: '100%' }}>
         <DataGrid
           rows={nodeList}
           getRowId={(row)=> row.feed_url}
           columns={columns}
-          pageSize={10}
-          rowsPerPageOptions={[10]}
+          pageSize={100}
+          rowsPerPageOptions={[100]}
         />
       </div>
       {/* Delete Dialog */}
