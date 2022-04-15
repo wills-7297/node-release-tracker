@@ -194,8 +194,9 @@ async function updateOpNodeVersion(req: any, res: any){
 			let updates = JSON.parse(data.toString());
 			try{
 				// 更新status
+				const updatesLength = updates.length-1;
 				const criteria = updates.map((ele, index)=>{
-					if(index===updates.length-1){
+					if(index===updatesLength){
 						return `'${ele.nodeName}'`;
 					}
 					return `'${ele.nodeName}', `;

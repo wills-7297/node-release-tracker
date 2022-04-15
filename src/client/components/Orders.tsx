@@ -65,6 +65,7 @@ export default function Orders(props) {
   }
   const radioGroupRef = React.useRef(null);
 
+  const currentTime = new Date().getTime();
   const columns = [
     { field: 'node_name', headerName: '链', minWidth: 120 },
     { field: 'node_full_name', headerName: '链全称', minWidth: 130 },
@@ -88,12 +89,26 @@ export default function Orders(props) {
       field: 'github_release_date',
       headerName: 'github发布时间',
       minWidth: 160,
-      type: 'date',
+      // type: 'date',
       valueGetter: (params) => {
         const value = params.row.current_feed;
         let currentFeed = value ? JSON.parse(value) : {};
-        const date = new Date(currentFeed.pubDate);
-        return date;
+        return currentFeed.pubDate;
+      },
+      renderCell: (params) => {
+        console.log(params)
+        let text = "";
+        if(params.value){
+          const date = new Date(params.value).getTime();
+        
+          const diffInDays = Math.floor((currentTime - date)/1000/60/60/24);
+          if(diffInDays>365){
+            text = Math.floor(diffInDays/365) + " 年以前";
+          }else{
+            text = diffInDays + " 天以前";
+          }
+        }
+        return text;
       }
     },
     {
@@ -140,7 +155,9 @@ export default function Orders(props) {
 
   return (
     <React.Fragment>
-      <Title>节点版本</Title>
+      <Title>
+        <div>节点版本</div>
+      </Title>
       <div style={{ height: "75vh", width: '100%' }}>
         <DataGrid
           rows={nodeList}
