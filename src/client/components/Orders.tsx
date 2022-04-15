@@ -17,6 +17,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import { deleteFeedProposal, confirmStatus } from './dashboardSlice';
 import { debounce } from "../utils/utils";
 import { useDispatch } from 'react-redux';
+import { Typography } from '@mui/material';
 
 const severityMap = {
   "low" : "success",
@@ -96,7 +97,6 @@ export default function Orders(props) {
         return currentFeed.pubDate;
       },
       renderCell: (params) => {
-        console.log(params)
         let text = "";
         if(params.value){
           const date = new Date(params.value).getTime();
@@ -152,12 +152,32 @@ export default function Orders(props) {
   ];
 
   // console.log(nodeList)
+  let unconfirmed = 0;
+  let waiting = 0;
+  let total = nodeList.length;
+  nodeList.forEach(ele=>{
+    const status = JSON.parse(ele.status);
+    if(status?.value==="UNCONFIRMED"){
+      unconfirmed++;
+    }
+    if(status?.value==="WAITING"){
+      waiting++;
+    }
+  });
 
   return (
     <React.Fragment>
-      <Title>
-        <div>节点版本</div>
-      </Title>
+      <div style={{display: "flex"}}>
+        <div style={{flex: "4"}}>
+          <Title>节点版本</Title>
+        </div>
+        <Typography component="p" variant="subtitle1" style={{flex: "1"}}>
+          未确认：{`${unconfirmed} / ${total}`}
+        </Typography>
+        <Typography component="p" variant="subtitle1" style={{flex: "1"}}>
+          待处理：{`${waiting} / ${total}`}
+        </Typography>
+      </div>
       <div style={{ height: "75vh", width: '100%' }}>
         <DataGrid
           rows={nodeList}
