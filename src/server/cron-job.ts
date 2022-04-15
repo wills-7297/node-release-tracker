@@ -15,6 +15,7 @@ cron.schedule(`*/${timeRange} * * * *`, async () => {
 async function updateCurrentFeed(feed_url: string, updateFeed: any){
 	const array = updateFeed?.link?.split("/");
 	let githubNodeVersion = array?.[array?.length-1];
+	// 这边可以处理版本格式问题
 	if(githubNodeVersion.substring(0,1).toLowerCase()==="v"){
 		githubNodeVersion = githubNodeVersion.substring(1);
 	}
@@ -32,8 +33,19 @@ async function main() {
 	const subscriptions: any = res.data.data;
 	console.log(subscriptions.length);
 
-	for (let i = 0; i < subscriptions.length; i++) {
-		const { feed_url, lark_url, current_feed } = subscriptions[i];
+	// 每次循环（总数/4）个
+	const currentMinute = new Date().getMinutes();
+	const currentCohort = Math.floor(currentMinute/15); // 0, 1, 2, 3
+	const totalNum = subscriptions.length;
+	const cohortSize = Math.floor(totalNum / 4);
+	const loopStart = currentCohort * cohortSize;
+	const loopEnd = currentCohort === 3 ? totalNum : (currentCohort + 1) * cohortSize;
+	for (let i = loopStart; i < loopEnd; i++) {
+		const {
+			feed_url,
+			lark_url,
+			current_feed
+		} = subscriptions[i];
 
 		// 根据列表，http请求获取最新feeds
 		const fetchedFeeds: any = await requests.getRssFeed(feed_url);
