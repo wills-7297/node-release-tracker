@@ -58,7 +58,9 @@ export async function init(){
             github_node_version TEXT,
             op_node_version TEXT,
             status TEXT,
-            handler TEXT
+            handler TEXT,
+            reminderDate TEXT,
+            reminded INTEGER
         )`
     );
 }
