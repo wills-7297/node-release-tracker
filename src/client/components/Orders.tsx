@@ -86,6 +86,7 @@ export default function Orders(props) {
     setReminderOpen(false);
     setReminderItem({reminder_date: "", reminded: null, node_full_name:"", reminder_text:""});
     setReminderDateValue(null);
+    setReminderText("");
   }
 
   const handleReminderConfirm = async ()=>{
