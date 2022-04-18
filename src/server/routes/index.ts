@@ -108,8 +108,10 @@ async function addFeed(req: any, res: any){
 async function deleteFeed(req: any, res: any){
 	req.pipe(
 		concat(async data => {
-			let { feedUrls } = JSON.parse(data.toString());
-			res.send({code:200, message:"success", data: feedUrls});
+			let feedUrls = JSON.parse(data.toString());
+
+			await db.unsubscribe(feedUrls);
+			res.send({code:200, message:"success"});
 		})
 	);
 };

@@ -89,12 +89,16 @@ export async function subscribe(feedUrl: string, larkUrl: string, nodeName: stri
     return res;
 };
 
-export async function unSubscribe(feedUrl: string) {
-    const res = await db_run(
-        `DELETE FROM ${tableName} WHERE feed_url=?`,
-        [feedUrl]
+export async function unsubscribe(feedUrls: string[]) {
+    var statement = db.prepare(
+        `DELETE FROM ${tableName} WHERE feed_url=?`
     );
-    return res;
+
+    for (var i = 0; i < feedUrls.length; i++) {
+        statement.run(feedUrls[i]);
+    }
+
+    return;
 };
 
 export async function updateCurrentFeed(feedUrl: string, updateFeed: any, githubNodeVersion: string) {
