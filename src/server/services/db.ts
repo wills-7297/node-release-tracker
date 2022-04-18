@@ -60,7 +60,8 @@ export async function init(){
             status TEXT,
             handler TEXT,
             reminder_date INTEGER,
-            reminded INTEGER
+            reminded INTEGER,
+            reminder_text TEXT
         )`
     );
 }
@@ -164,9 +165,9 @@ export async function updateHandler(array: any[]) {
 
 export async function setReminderDate(obj: any) {
     const res = await db_run(
-        `UPDATE ${tableName} SET reminder_date = ?, reminded = ?
+        `UPDATE ${tableName} SET reminder_date = ?, reminded = ?, reminder_text = ?
         WHERE node_name=?`,
-        [obj.reminderDate, obj.reminded, obj.nodeName]
+        [obj.reminderDate, obj.reminded, obj.reminderText, obj.nodeName]
     );
 
     return res;

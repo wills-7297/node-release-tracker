@@ -40,12 +40,62 @@ async function main() {
 	const cohortSize = Math.floor(totalNum / 4);
 	const loopStart = currentCohort * cohortSize;
 	const loopEnd = currentCohort === 3 ? totalNum : (currentCohort + 1) * cohortSize;
+	// console.log(loopStart, loopEnd)
 	for (let i = loopStart; i < loopEnd; i++) {
 		const {
 			feed_url,
 			lark_url,
-			current_feed
+			current_feed,
+			reminded,
+			reminder_date,
+			node_name,
+			node_full_name,
+			reminder_text
 		} = subscriptions[i];
+
+		// 检查reminder_date和reminded. 如果当前时间已经大于等于设定时间，那么发送lark消息.
+		if(reminded===0 && (new Date().getTime())>=reminder_date){
+			const response = await axios.post(
+				lark_url,
+				{
+					"msg_type": "post",
+					"content": {
+						"post": {
+							"zh_cn": {
+								"title": `${node_full_name} 提醒`,
+								"content": [
+									[
+										{
+											"tag": "text",
+											"text": `提醒日期：${new Date(reminder_date).toLocaleString()}`,
+										},
+									],
+									[
+										{
+											"tag": "text",
+											"text": "",
+										},
+									],
+									[
+										{
+											"tag": "text",
+											"text": `提醒文字：${reminder_text}`
+										}
+									]
+								]
+							}
+						}
+					}
+				}
+			);
+			console.log(response.data)
+
+			// 重置reminded和reminder_date
+			await axios.post(
+				`http://127.0.0.1:${port}/api/set/reminder-date`,
+				{reminderDate: null, nodeName: node_name, reminded: 1}
+			)
+		}
 
 		// 根据列表，http请求获取最新feeds
 		const fetchedFeeds: any = await requests.getRssFeed(feed_url);
@@ -56,12 +106,11 @@ async function main() {
 			// TODO: serialize otherwise when mass, some items missing. maybe batch send
 			await updateCurrentFeed(feed_url, fetchedFeeds?.items?.[0]);
 		}else{
+			// 将获取的数据与数据库中的current_feed进行比较，记录不同的feeds. 最多比较3条数据。
 			const updatedFeeds: any[] = [];
-
-			// 将获取的数据与数据库中的current_feed进行比较，记录不同的feeds
-			for(let j=0; j<fetchedFeeds?.items?.length; j++){
+			const currentFeedId = JSON.parse(current_feed)?.id;
+			for(let j=0; j<3; j++){
 				const item = fetchedFeeds?.items?.[j];
-				const currentFeedId = JSON.parse(current_feed)?.id;
 				if(currentFeedId!==item?.id){
 					console.log("currentFeedId: "+currentFeedId);
 					updatedFeeds.push(item);

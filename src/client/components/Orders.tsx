@@ -75,7 +75,8 @@ export default function Orders(props) {
 
   // Notice Dialog state
   const [reminderOpen, setReminderOpen] = React.useState(false);
-  const [reminderItem, setReminderItem] = React.useState({reminder_date: "", reminded: null, node_full_name:""});
+  const [reminderItem, setReminderItem] = React.useState({reminder_date: "", reminded: null, node_full_name:"", reminder_text:""});
+  const [reminderText, setReminderText] = React.useState("");
   const handleReminderOpen = (item) => {
     setReminderOpen(true);
     setReminderItem(item);
@@ -83,13 +84,13 @@ export default function Orders(props) {
 
   const handleReminderClose = () => {
     setReminderOpen(false);
-    setReminderItem({reminder_date: "", reminded: null, node_full_name:""});
+    setReminderItem({reminder_date: "", reminded: null, node_full_name:"", reminder_text:""});
     setReminderDateValue(null);
   }
 
   const handleReminderConfirm = async ()=>{
     // @ts-ignore
-    dispatch(setReminderDate({reminderDate: reminderDateValue.getTime(), nodeName: reminderItem.node_name, reminded: 0}));
+    dispatch(setReminderDate({reminderDate: reminderDateValue.getTime(), nodeName: reminderItem.node_name, reminded: 0, reminderText}));
 
     handleReminderClose();
   }
@@ -307,6 +308,18 @@ export default function Orders(props) {
               />
             </LocalizationProvider>
           </div>
+          <TextField
+            autoFocus
+            margin="dense"
+            id="reminder_text"
+            label="提醒文字 (可选填)"
+            fullWidth
+            variant="standard"
+            value={reminderText}
+            onChange={ele=>{
+              setReminderText(ele.target.value)
+            }}
+          />
         </DialogContent>
         <DialogActions>
           <Button autoFocus onClick={handleReminderClose}>
