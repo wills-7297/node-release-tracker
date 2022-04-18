@@ -13,6 +13,7 @@
     "test-cron-job": "export NODE_ENV='development' && ts-node ./src/server/cron-job.ts",
     "test": "export NODE_ENV=test",
     "i": "rm -rf node_modules && npm i",
+    "postinstall": "cd ./src/client && npm install",
     "pub": "npm run tsc && npm publish"
   },
   "author": "",
