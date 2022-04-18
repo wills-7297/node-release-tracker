@@ -7,6 +7,7 @@
     "start": "npm run build && pm2-runtime start ecosystem.config.js --env production",
     "build": "rm -rf build && tsc",
     "ls": "pm2 ls",
+    "stop": "pm2 delete all",
     "stop-server": "pm2 delete server",
     "stop-cron-job": "pm2 delete cron-job",
     "test-server": "export NODE_ENV='development'&& ts-node ./src/server/index.ts",
