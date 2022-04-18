@@ -14,10 +14,14 @@ import Alert from '@mui/material/Alert';
 import RadioGroup from '@mui/material/RadioGroup';
 import Radio from '@mui/material/Radio';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import { deleteFeedProposal, confirmStatus } from './dashboardSlice';
+import { deleteFeedProposal, confirmStatus, setReminderDate } from './dashboardSlice';
 import { debounce } from "../utils/utils";
 import { useDispatch } from 'react-redux';
 import { Typography } from '@mui/material';
+import TextField from '@mui/material/TextField';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
 const severityMap = {
   "low" : "success",
@@ -37,12 +41,14 @@ export default function Orders(props) {
   }
   const handleDeleteClose = () => {
     setDeleteOpen(false);
+    setDeleteItem({node_full_name: ""});
   };
 
   const handleDeleteConfirm = async ()=>{
-    handleDeleteClose();
     // @ts-ignore
     dispatch(deleteFeedProposal({nodeFullName: deleteItem.node_full_name}));
+
+    handleDeleteClose();
   }
 
   // Edit Dialog state
@@ -55,16 +61,39 @@ export default function Orders(props) {
   }
   const handleEditClose = () => {
     setEditOpen(false);
+    setEditItem({node_name: ""});
   };
 
   const dispatch = useDispatch();
   const handleEditConfirm = async () => {
-    handleEditClose();
-
     // @ts-ignore
     dispatch(confirmStatus({nodeName: editItem.node_name, radioValue}));
+
+    handleEditClose();
   }
   const radioGroupRef = React.useRef(null);
+
+  // Notice Dialog state
+  const [reminderOpen, setReminderOpen] = React.useState(false);
+  const [reminderItem, setReminderItem] = React.useState({reminder_date: "", reminded: null, node_full_name:""});
+  const handleReminderOpen = (item) => {
+    setReminderOpen(true);
+    setReminderItem(item);
+  }
+
+  const handleReminderClose = () => {
+    setReminderOpen(false);
+    setReminderItem({reminder_date: "", reminded: null, node_full_name:""});
+    setReminderDateValue(null);
+  }
+
+  const handleReminderConfirm = async ()=>{
+    // @ts-ignore
+    dispatch(setReminderDate({reminderDate: reminderDateValue.getTime(), nodeName: reminderItem.node_name, reminded: 0}));
+
+    handleReminderClose();
+  }
+  const [reminderDateValue, setReminderDateValue] = React.useState(null);
 
   const currentTime = new Date().getTime();
   const columns = [
@@ -146,6 +175,7 @@ export default function Orders(props) {
           item={params.row}
           handleDeleteOpen={handleDeleteOpen}
           handleEditOpen={handleEditOpen}
+          handleReminderOpen={handleReminderOpen}
         />
       ]
     },
@@ -249,6 +279,40 @@ export default function Orders(props) {
             取消
           </Button>
           <Button onClick={debounce(handleEditConfirm)}>
+            确认
+          </Button>
+        </DialogActions>
+      </Dialog>
+      {/* Reminder Dialog */}
+      <Dialog
+        sx={{ '& .MuiDialog-paper': { width: '80%', maxHeight: 435 } }}
+        maxWidth="xs"
+        open={reminderOpen}
+        onClose={handleReminderClose}
+      >
+        <DialogTitle>设置提醒</DialogTitle>
+        <DialogContent dividers>
+          <div style={{marginBottom: "15px"}}>
+            链名称：{reminderItem.node_full_name}
+          </div>
+          <div>
+            <LocalizationProvider dateAdapter={AdapterDateFns}>
+              <DatePicker
+                label={"提醒日期"}
+                value={reminderDateValue}
+                onChange={(newValue) => {
+                  setReminderDateValue(newValue);
+                }}
+                renderInput={(params) => <TextField {...params} />}
+              />
+            </LocalizationProvider>
+          </div>
+        </DialogContent>
+        <DialogActions>
+          <Button autoFocus onClick={handleReminderClose}>
+            取消
+          </Button>
+          <Button onClick={debounce(handleReminderConfirm)}>
             确认
           </Button>
         </DialogActions>

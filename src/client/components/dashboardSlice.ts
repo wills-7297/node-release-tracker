@@ -54,6 +54,21 @@ export const confirmStatus = createAsyncThunk(
   }
 );
 
+export const setReminderDate = createAsyncThunk(
+  "set/reminder-date",
+  async (data: any, thunkAPI) => {
+    const res = await HttpRequestClient.post(
+      "/api/set/reminder-date",
+      data
+    );
+    if(res?.code===200){
+      thunkAPI.dispatch(fetchNodeList());
+    }else{
+      // TODO: error alert
+    }
+  }
+);
+
 export const dashboardSlice = createSlice({
   name: 'dashboard',
   initialState: {

@@ -59,7 +59,7 @@ export async function init(){
             op_node_version TEXT,
             status TEXT,
             handler TEXT,
-            reminderDate TEXT,
+            reminder_date INTEGER,
             reminded INTEGER
         )`
     );
@@ -162,6 +162,16 @@ export async function updateHandler(array: any[]) {
     return;
 };
 
+export async function setReminderDate(obj: any) {
+    const res = await db_run(
+        `UPDATE ${tableName} SET reminder_date = ?, reminded = ?
+        WHERE node_name=?`,
+        [obj.reminderDate, obj.reminded, obj.nodeName]
+    );
+
+    return res;
+};
+
 export async function deleteTable(tableName: string) {
     const res = await db_run(
         `DROP TABLE IF EXISTS ${tableName}`
@@ -172,6 +182,13 @@ export async function deleteTable(tableName: string) {
 export async function addColumn(columnName: string, dataType: string) {
     const res = await db_run(
         `ALTER TABLE ${tableName} ADD COLUMN ${columnName} ${dataType}`
+    );
+    return res;
+};
+
+export async function dropColumn(columnName: string, newColumnName: string) {
+    const res = await db_run(
+        `ALTER TABLE ${tableName} RENAME COLUMN ${columnName} TO ${newColumnName}`
     );
     return res;
 };

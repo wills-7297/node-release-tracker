@@ -53,6 +53,10 @@ module.exports = app => {
 		addColumn
 	]);
 
+	app.post("/api/set/reminder-date", [
+		setReminderDate
+	]);
+
 	
 };
 
@@ -313,6 +317,23 @@ async function addColumn(req: any, res: any){
 				for(let i=0; i<updates.length; i++){
 					await db.addColumn(updates[i]?.columnName, updates[i]?.dataType);
 				}
+				res.send({code:200, message:"success"});
+			}catch(error: any){
+				res.send(error);
+			}
+		})
+	);
+};
+
+async function setReminderDate(req: any, res: any){
+	req.pipe(
+		concat(async data => {
+			if (data.length === 0) {
+				return res.sendStatus(400);
+			}
+			let parsedData = JSON.parse(data.toString());
+			try{
+				await db.setReminderDate(parsedData);
 				res.send({code:200, message:"success"});
 			}catch(error: any){
 				res.send(error);
