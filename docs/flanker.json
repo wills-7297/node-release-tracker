@@ -1,0 +1,28 @@
+curl -X POST 'http://127.0.0.1:8000/api/add/feed' -d \
+'{
+	"larkUrl": "https://open.larksuite.com/open-apis/bot/v2/hook/5264da6c-181c-4087-bf99-0200ca216ec7",
+        "feedUrls": [
+                {"feedUrl":"https://github.com/tronprotocol/java-tron/releases.atom", "handler": "flanker", "nodeFullName": "Tron", "nodeName":"tron"},
+                {"feedUrl":"https://github.com/tronscan/tronscan-node-client/releases.atom"},
+                {"feedUrl":"https://github.com/emn178/js-sha3/releases.atom"},
+                {"feedUrl":"https://github.com/cryptocoinjs/secp256k1-node/releases.atom"},
+                {"feedUrl":"https://github.com/dfinity/rosetta-client/releases.atom", "handler": "flanker", "nodeFullName": "ICP", "nodeName":"icp"},
+                {"feedUrl":"https://github.com/klaytn/klaytn/releases.atom", "handler": "flanker", "nodeFullName": "Klaytn", "nodeName":"klay"},
+                {"feedUrl":"https://github.com/serokell/tezos-packaging/releases.atom", "handler": "flanker", "nodeFullName": "Tezos", "nodeName":"xtz"},
+                {"feedUrl":"https://gitlab.com/tezos/tezos/-/tags?format=atom"},
+                {"feedUrl":"https://github.com/onflow/fcl-js/releases.atom"},
+                {"feedUrl":"https://github.com/ava-labs/avalanchejs/releases.atom"},
+                {"feedUrl":"https://github.com/ava-labs/avalanchego/releases.atom", "handler": "flanker", "nodeFullName": "Avalanche", "nodeName":"ava"},
+                {"feedUrl":"https://github.com/algorand/js-algorand-sdk/releases.atom"},
+                {"feedUrl":"https://github.com/algorand/go-algorand/releases.atom", "handler": "flanker", "nodeFullName": "Algorand", "nodeName":"algo"},
+                {"feedUrl":"https://github.com/algorand/indexer/releases.atom", "handler": "flanker", "nodeFullName": "Algorand Indexer", "nodeName":"algo-indexer"},
+                {"feedUrl":"https://github.com/near/near-api-js/releases.atom"},
+                {"feedUrl":"https://github.com/near/nearcore/releases.atom", "handler": "flanker", "nodeFullName": "Near", "nodeName":"near"},
+                {"feedUrl":"https://github.com/helium/blockchain-etl/releases.atom", "handler": "flanker", "nodeFullName": "Helium-etl", "nodeName":"hnt-etl"},
+                {"feedUrl":"https://github.com/helium/blockchain-http/releases.atom", "handler": "flanker", "nodeFullName": "Helium-http", "nodeName":"hnt-http"},
+                {"feedUrl":"https://github.com/helium/helium-js/tags.atom"},
+                {"feedUrl":"https://github.com/ElrondNetwork/observing-squad/releases.atom", "handler": "flanker", "nodeFullName": "Elrond", "nodeName":"egld"},
+                {"feedUrl":"https://github.com/ElrondNetwork/elrond-core-js/releases.atom"}
+        ]
+}' \
+-H 'Content-Type: application/json'

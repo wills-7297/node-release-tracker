@@ -1,0 +1,23 @@
+curl -X POST 'http://127.0.0.1:8000/api/add/feed' -d \
+'{
+	"larkUrl": "https://open.larksuite.com/open-apis/bot/v2/hook/7de7958b-34be-4f72-afc8-081b0f2b092a",
+        "feedUrls": [
+                {"feedUrl":"https://github.com/indutny/elliptic/releases.atom"},
+                {"feedUrl":"https://github.com/ethers-io/ethers.js/releases.atom"},
+                {"feedUrl":"https://github.com/ethereumjs/ethereumjs-monorepo/releases.atom"},
+                {"feedUrl":"https://github.com/ethereum/go-ethereum/releases.atom", "handler": "jason", "nodeFullName": "Ethereum","nodeName":"eth"},
+                {"feedUrl":"https://github.com/web3j/web3j/releases.atom"},	
+                {"feedUrl":"https://github.com/etclabscore/core-geth/releases.atom", "handler": "jason", "nodeFullName": "Ethereum Classic","nodeName":"etc"},
+                {"feedUrl":"https://github.com/Fantom-foundation/go-opera/releases.atom", "handler": "jason", "nodeFullName": "Fantom","nodeName":"ftm"},
+                {"feedUrl":"https://github.com/Zilliqa/Zilliqa/releases.atom", "handler": "jason", "nodeFullName": "Zilliqa","nodeName":"zil"},
+                {"feedUrl":"https://github.com/maticnetwork/bor/releases.atom", "handler": "jason", "nodeFullName": "Matic-bor","nodeName":"matic-bor"},
+                {"feedUrl":"https://github.com/maticnetwork/heimdall/releases.atom", "handler": "jason", "nodeFullName": "Matic-heimdall","nodeName":"matic-heimdall"},
+                {"feedUrl":"https://github.com/OffchainLabs/arbitrum/releases.atom", "handler": "jason", "nodeFullName": "Arbitrum","nodeName":"arbi"},
+                {"feedUrl":"https://github.com/binance-chain/bsc/releases.atom", "handler": "jason", "nodeFullName": "Binance Smart Chain","nodeName":"bsc"},
+                {"feedUrl":"https://github.com/celo-org/celo-blockchain/releases.atom", "handler": "jason", "nodeFullName": "Celo","nodeName":"celo"},
+                {"feedUrl":"https://github.com/stars-labs/heco-chain/releases.atom", "handler": "jason", "nodeFullName": "Huobi Eco Chain","nodeName":"heco"},
+                {"feedUrl":"https://github.com/harmony-one/harmony/releases.atom", "handler": "jason", "nodeFullName": "Harmony","nodeName":"one"},
+                {"feedUrl":"https://github.com/thetatoken/theta-protocol-ledger/releases.atom", "handler": "jason", "nodeFullName": "Theta Network","nodeName":"theta"}
+        ]
+}' \
+-H 'Content-Type: application/json'

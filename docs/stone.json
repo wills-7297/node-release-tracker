@@ -1,0 +1,38 @@
+curl -X POST 'http://127.0.0.1:8000/api/add/feed' -d \
+'{
+	"larkUrl": "https://open.larksuite.com/open-apis/bot/v2/hook/8c0c4c34-2ba0-4f9f-9ec5-fc49590aac00",
+        "feedUrls": [
+                {"feedUrl":"https://github.com/EOSIO/eosjs/releases.atom"},	
+                {"feedUrl":"https://github.com/EOSIO/eosjs-ecc/releases.atom"},	
+                {"feedUrl":"https://github.com/bitpay/bitcore/releases.atom"},	
+                {"feedUrl":"https://github.com/bitcoin/bitcoin/releases.atom", "handler": "stone", "nodeFullName": "Bitcoin", "nodeName":"btc"},
+                {"feedUrl":"https://github.com/litecoin-project/litecore-litecoin/releases.atom", "handler": "stone", "nodeFullName": "Litecoin", "nodeName":"ltc"},
+                {"feedUrl":"https://github.com/dogecoin/dogecoin/releases.atom", "handler": "stone", "nodeFullName": "Dogecoin", "nodeName":"doge"},
+                {"feedUrl":"https://github.com/Emurgo/cardano-serialization-lib/releases.atom"},	
+                {"feedUrl":"https://github.com/input-output-hk/cardano-rosetta/releases.atom", "handler": "stone", "nodeFullName": "Cardano-Rosetta", "nodeName":"ada-rosetta"},
+                {"feedUrl":"https://github.com/bitcoin-cash-node/bitcoin-cash-node/releases.atom", "handler": "stone", "nodeFullName": "Bitcoin cash", "nodeName":"bch"},
+                {"feedUrl":"https://github.com/OmniLayer/omnicore/releases.atom", "handler": "stone", "nodeFullName": "Omni", "nodeName":"omni"},
+                {"feedUrl":"https://github.com/bitcoinjs/bech32/releases.atom"},	
+                {"feedUrl":"https://github.com/wavesplatform/waves-transactions/releases.atom"},	
+                {"feedUrl":"https://github.com/wavesplatform/ts-lib-crypto/releases.atom"},	
+                {"feedUrl":"https://github.com/wavesplatform/Waves/releases.atom", "handler": "stone", "nodeFullName": "Waves", "nodeName":"waves"},
+                {"feedUrl":"https://github.com/decred/dcrdata/releases.atom", "handler": "stone", "nodeFullName": "Decred", "nodeName":"dcr"},
+                {"feedUrl":"https://github.com/decredjs/decredjs-lib/releases.atom"},	
+                {"feedUrl":"https://github.com/DigiByte-Core/digibyte/releases.atom", "handler": "stone", "nodeFullName": "Digibyte", "nodeName":"dgb"},
+                {"feedUrl":"https://github.com/digicontributer/digibyte-js/releases.atom"},	
+                {"feedUrl":"https://github.com/qtumproject/qtum/releases.atom", "handler": "stone", "nodeFullName": "Qtum", "nodeName":"qtum"},
+                {"feedUrl":"https://github.com/RavenProject/Ravencoin/releases.atom", "handler": "stone", "nodeFullName": "Ravencoin", "nodeName":"rvn"},
+                {"feedUrl":"https://github.com/RavenDevKit/ravencore-lib/releases.atom"},	
+                {"feedUrl":"https://github.com/HorizenOfficial/zen/releases.atom", "handler": "stone", "nodeFullName": "Horizen", "nodeName":"zen"},
+                {"feedUrl":"https://github.com/HorizenOfficial/zencashjs/releases.atom"},	
+                {"feedUrl":"https://github.com/bitcoin-sv/bitcoin-sv/releases.atom", "handler": "stone", "nodeFullName": "Bitcoin SV", "nodeName":"bsv"},
+                {"feedUrl":"https://github.com/Bitcoin-ABC/bitcoin-abc/releases.atom", "handler": "stone", "nodeFullName": "eCash", "nodeName":"xec"},
+                {"feedUrl":"https://github.com/cosmos/gaia/releases.atom", "handler": "stone", "nodeFullName": "Cosmos", "nodeName":"atom"},
+                {"feedUrl":"https://github.com/cosmos/cosmjs/tags.atom"},	
+                {"feedUrl":"https://github.com/BTCGPU/BTCGPU/releases.atom", "handler": "stone", "nodeFullName": "Bitcoin Gold", "nodeName":"btg"},
+                {"feedUrl":"https://github.com/dashpay/dash/releases.atom", "handler": "stone", "nodeFullName": "Dash", "nodeName":"dash"},
+                {"feedUrl":"https://github.com/zcash/zcash/releases.atom", "handler": "stone", "nodeFullName": "Zcash", "nodeName":"zcash"},
+                {"feedUrl":"https://github.com/matter-labs/zksync/releases.atom", "handler": "stone", "nodeFullName": "zkSync", "nodeName":"zksync"}
+        ]
+}' \
+-H 'Content-Type: application/json'
