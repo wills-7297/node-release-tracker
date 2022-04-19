@@ -1,6 +1,7 @@
 import axios from "axios";
 import * as requests from "./services/requests";
 import cron from "node-cron"
+import { LARK_HARDFORK_URL, handlerToLarkId, generateLarkNotice } from "./utils/lark";
 
 // running a task every: dev - 1 minute, prod - 15 minutes
 const timeRange = process.env.NODE_ENV==="development" ? "1" : "15";
@@ -50,45 +51,39 @@ async function main() {
 			reminder_date,
 			node_name,
 			node_full_name,
-			reminder_text
+			reminder_text,
+			handler
 		} = subscriptions[i];
 
 		// 检查reminder_date和reminded. 如果当前时间已经大于等于设定时间，那么发送lark消息.
 		if(reminded===0 && (new Date().getTime())>=reminder_date){
-			const response = await axios.post(
-				lark_url,
-				{
-					"msg_type": "post",
-					"content": {
-						"post": {
-							"zh_cn": {
-								"title": `${node_full_name} 提醒`,
-								"content": [
-									[
-										{
-											"tag": "text",
-											"text": `提醒日期：${new Date(reminder_date).toLocaleString()}`,
-										},
-									],
-									[
-										{
-											"tag": "text",
-											"text": "",
-										},
-									],
-									[
-										{
-											"tag": "text",
-											"text": `提醒文字：${reminder_text}`
-										}
-									]
-								]
-							}
-						}
-					}
-				}
+			const reminderLarkMsg = generateLarkNotice(
+				`${node_full_name} 提醒`,
+				[
+					`提醒日期：${new Date(reminder_date).toLocaleString()}`,
+					"",
+					`提醒文字：${reminder_text}`
+				]
 			);
-			console.log(response.data)
+			await axios.post(lark_url, reminderLarkMsg);
+
+			const reminderLarkMsgV2 = generateLarkNotice(
+				`${node_full_name} 提醒`,
+				[
+					`提醒日期：${new Date(reminder_date).toLocaleString()}`,
+					"",
+					`提醒文字：${reminder_text}`,
+					""
+				],
+				[
+					{
+						"tag": "at",
+						"user_id": handlerToLarkId[handler].user_id,
+						"user_name": handlerToLarkId[handler].user_name
+					}
+				]
+			);
+			await axios.post(LARK_HARDFORK_URL, reminderLarkMsgV2);
 
 			// 重置reminded和reminder_date
 			await axios.post(

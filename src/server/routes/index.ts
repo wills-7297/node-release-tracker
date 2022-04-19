@@ -2,7 +2,7 @@ import * as db from "../services/db";
 import * as requests from "../services/requests";
 import concat from "concat-stream";
 import axios from "axios";
-import { CORRESPONDENT_LARK_URL, generateLarkNotice } from "../utils/lark";
+import { LARK_ADMIN_URL, generateLarkNotice } from "../utils/lark";
 
 module.exports = app => {
 	app.get("/api/list/subscriptions", [
@@ -133,7 +133,7 @@ async function addFeedProposal(req: any, res: any){
 			}
 			try{
 				await axios.post(
-					CORRESPONDENT_LARK_URL,
+					LARK_ADMIN_URL,
 					generateLarkNotice("申请添加链节点", array),
 				);
 
@@ -155,7 +155,7 @@ async function deleteFeedProposal(req: any, res: any){
 			let array: any[] = [parsed.nodeFullName];
 			try{
 				await axios.post(
-					CORRESPONDENT_LARK_URL,
+					LARK_ADMIN_URL,
 					generateLarkNotice("申请删除链节点", array),
 				);
 
