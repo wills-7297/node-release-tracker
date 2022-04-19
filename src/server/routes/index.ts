@@ -57,6 +57,9 @@ module.exports = app => {
 		setReminderDate
 	]);
 
+	app.post("/api/update/info", [
+		updateInfo
+	]);
 	
 };
 
@@ -283,6 +286,23 @@ async function confirmWaiting(req: any, res: any){
 			try{
 				const updates: any = [{nodeName, status: "WAITING"}];
 				await db.updateStatus(updates, "node_name", "nodeName");
+				res.send({code:200, message:"success"});
+			}catch(error: any){
+				res.send(error);
+			}
+		})
+	);
+};
+
+async function updateInfo(req: any, res: any){
+	req.pipe(
+		concat(async data => {
+			if (data.length === 0) {
+				return res.sendStatus(400);
+			}
+			let {updates, updateCol, byCol} = JSON.parse(data.toString());
+			try{
+				await db.updateInfo(updates, updateCol, byCol);
 				res.send({code:200, message:"success"});
 			}catch(error: any){
 				res.send(error);

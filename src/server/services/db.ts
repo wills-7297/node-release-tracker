@@ -153,6 +153,20 @@ export async function updateStatus(array: any[], column, criteria) {
     return;
 };
 
+export async function updateInfo(array: any[], updateCol: string, byCol: string) {
+    var statement = db.prepare(
+        `UPDATE ${tableName} SET ${updateCol} = ?
+        WHERE ${byCol}=?`
+    );
+
+    for (var i = 0; i < array.length; i++) {
+        const item = array[i];
+        statement.run(item[`${updateCol}`], item[`${byCol}`]);
+    }
+
+    return;
+};
+
 export async function updateHandler(array: any[]) {
     var statement = db.prepare(
         `UPDATE ${tableName} SET handler = ?
