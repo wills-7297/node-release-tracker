@@ -15,7 +15,7 @@ cron.schedule(`*/${timeRange} * * * *`, async () => {
 // 更新当前feed_url最新的current_feed
 async function updateCurrentFeed(feed_url: string, updateFeed: any){
 	const array = updateFeed?.link?.split("/");
-	let githubNodeVersion = array?.[array?.length-1];
+	let githubNodeVersion = decodeURIComponent(array?.[array?.length-1]);
 	// 这边可以处理版本格式问题
 	if(githubNodeVersion.substring(0,1).toLowerCase()==="v"){
 		githubNodeVersion = githubNodeVersion.substring(1);
