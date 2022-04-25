@@ -9,8 +9,6 @@ curl -X POST 'http://127.0.0.1:8000/api/add/feed' -d \
                 {"feedUrl":"https://github.com/MetisProtocol/mvm/releases.atom", "handler": "shijiang", "nodeFullName": "MetisDAO", "nodeName": "metis"},
                 {"feedUrl":"https://github.com/oasisprotocol/oasis-core/releases.atom", "handler": "shijiang", "nodeName": "rose", "nodeFullName": "Rose"},
                 {"feedUrl":"https://github.com/oasisprotocol/oasis-rosetta-gateway/releases.atom", "handler": "shijiang", "nodeName": "rose-rosetta", "nodeFullName": "Rose Rosetta api"}, 
-                {"feedUrl":"https://github.com/omgnetwork/optimism-v2/releases.atom", "handler": "shijiang", "nodeName": "boba-old", "nodeFullName": "Boba-old"}, 
-                {"feedUrl":"https://github.com/bobanetwork/boba/tags.atom", "handler": "shijiang", "nodeName": "boba", "nodeFullName": "Boba"}, 
                 {"feedUrl":"https://github.com/worldwide-asset-exchange/wax-blockchain/releases.atom", "handler": "shijiang", "nodeName": "wax", "nodeFullName": "Worldwide Asset Exchange"}, 
                 {"feedUrl":"https://github.com/tharsis/evmos/releases.atom", "handler": "shijiang", "nodeName": "evmos", "nodeFullName": "Evmos"}, 
                 {"feedUrl":"https://github.com/iotexproject/iotex-core/releases.atom", "handler": "shijiang", "nodeName": "iotex", "nodeFullName": "Iotex"}, 
