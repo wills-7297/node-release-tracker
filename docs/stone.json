@@ -25,7 +25,6 @@ curl -X POST 'http://127.0.0.1:8000/api/add/feed' -d \
                 {"feedUrl":"https://github.com/RavenDevKit/ravencore-lib/releases.atom"},	
                 {"feedUrl":"https://github.com/HorizenOfficial/zen/releases.atom", "handler": "stone", "nodeFullName": "Horizen", "nodeName":"zen"},
                 {"feedUrl":"https://github.com/HorizenOfficial/zencashjs/releases.atom"},	
-                {"feedUrl":"https://github.com/bitcoin-sv/bitcoin-sv/releases.atom", "handler": "stone", "nodeFullName": "Bitcoin SV", "nodeName":"bsv"},
                 {"feedUrl":"https://github.com/Bitcoin-ABC/bitcoin-abc/releases.atom", "handler": "stone", "nodeFullName": "eCash", "nodeName":"xec"},
                 {"feedUrl":"https://github.com/cosmos/gaia/releases.atom", "handler": "stone", "nodeFullName": "Cosmos", "nodeName":"atom"},
                 {"feedUrl":"https://github.com/cosmos/cosmjs/tags.atom"},	
