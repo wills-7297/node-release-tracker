@@ -31,6 +31,8 @@ curl -X POST 'http://127.0.0.1:8000/api/add/feed' -d \
                 {"feedUrl":"https://github.com/BTCGPU/BTCGPU/releases.atom", "handler": "stone", "nodeFullName": "Bitcoin Gold", "nodeName":"btg"},
                 {"feedUrl":"https://github.com/dashpay/dash/releases.atom", "handler": "stone", "nodeFullName": "Dash", "nodeName":"dash"},
                 {"feedUrl":"https://github.com/zcash/zcash/releases.atom", "handler": "stone", "nodeFullName": "Zcash", "nodeName":"zcash"},
+                {"feedUrl":"https://github.com/SiaFoundation/siad/releases.atom", "handler": "stone", "nodeFullName": "Siacoin", "nodeName": "sia"},
+                {"feedUrl":"https://github.com/worldwide-asset-exchange/wax-blockchain/releases.atom", "handler": "stone", "nodeName": "wax", "nodeFullName": "Worldwide Asset Exchange"}, 
                 {"feedUrl":"https://github.com/matter-labs/zksync/releases.atom", "handler": "stone", "nodeFullName": "zkSync", "nodeName":"zksync"}
         ]
 }' \

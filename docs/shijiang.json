@@ -12,7 +12,9 @@ curl -X POST 'http://127.0.0.1:8000/api/add/feed' -d \
                 {"feedUrl":"https://github.com/worldwide-asset-exchange/wax-blockchain/releases.atom", "handler": "shijiang", "nodeName": "wax", "nodeFullName": "Worldwide Asset Exchange"}, 
                 {"feedUrl":"https://github.com/tharsis/evmos/releases.atom", "handler": "shijiang", "nodeName": "evmos", "nodeFullName": "Evmos"}, 
                 {"feedUrl":"https://github.com/iotexproject/iotex-core/releases.atom", "handler": "shijiang", "nodeName": "iotex", "nodeFullName": "Iotex"}, 
-                {"feedUrl":"https://github.com/MetisProtocol/l2geth/tags.atom", "handler": "shijiang", "nodeName": "metisgeth", "nodeFullName": "Metisgeth"}
+                {"feedUrl":"https://github.com/MetisProtocol/l2geth/tags.atom", "handler": "shijiang", "nodeName": "metisgeth", "nodeFullName": "Metisgeth"},
+                {"feedUrl":"https://github.com/ethereum-optimism/optimism/releases.atom", "handler": "shijiang", "nodeFullName": "optimism", "nodeName": "op"},
+                {"feedUrl":"https://github.com/ton-blockchain/ton/releases.atom", "handler": "shijiang", "nodeFullName": "toncoin", "nodeName": "ton"}
         ]
 }' \
 -H 'Content-Type: application/json'

@@ -35,6 +35,8 @@ curl -X POST 'http://127.0.0.1:8000/api/add/feed' -d \
                 {"feedUrl":"https://github.com/PureStake/moonbeam/releases.atom", "handler": "will", "nodeFullName": "Moonbeam", "nodeName": "glmr"},
                 {"feedUrl":"https://github.com/pokt-network/pocket-core/releases.atom", "handler": "will", "nodeFullName": "Pocket Netowrk", "nodeName": "pokt"},
                 {"feedUrl":"https://github.com/monero-project/monero/releases.atom", "handler": "will", "nodeFullName": "Monero", "nodeName": "xmr"},
+                {"feedUrl":"https://github.com/kadena-io/chainweb-node/releases.atom", "handler": "will", "nodeFullName": "Kadena", "nodeName": "kda"},
+                {"feedUrl":"https://github.com/scrtlabs/SecretNetwork/releases.atom", "handler": "will", "nodeFullName": "Secret", "nodeName": "scrt"},
                 {"feedUrl":"https://github.com/ArweaveTeam/arweave/releases.atom", "handler": "will", "nodeFullName": "Arweave", "nodeName": "ar"}
         ]
 }' \
