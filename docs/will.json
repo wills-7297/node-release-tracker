@@ -38,6 +38,8 @@ curl -X POST 'http://127.0.0.1:8000/api/add/feed' -d \
                 {"feedUrl":"https://github.com/kadena-io/chainweb-node/releases.atom", "handler": "will", "nodeFullName": "Kadena", "nodeName": "kda"},
                 {"feedUrl":"https://github.com/scrtlabs/SecretNetwork/releases.atom", "handler": "will", "nodeFullName": "Secret", "nodeName": "scrt"},
                 {"feedUrl":"https://github.com/Concordium/concordium-node/releases.atom", "handler": "will", "nodeFullName": "Concordium", "nodeName": "ccd"},
+                {"feedUrl":"https://github.com/CaduceusMetaverseProtocol/CMPChain-FullNode/releases.atom", "handler": "will", "nodeFullName": "Caduceus", "nodeName": "cmp"},
+                {"feedUrl":"https://github.com/kon-mainnet/Genesis/releases.atom", "handler": "will", "nodeFullName": "Kon", "nodeName": "kon"},
                 {"feedUrl":"https://github.com/ArweaveTeam/arweave/releases.atom", "handler": "will", "nodeFullName": "Arweave", "nodeName": "ar"}
         ]
 }' \

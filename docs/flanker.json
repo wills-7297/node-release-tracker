@@ -22,6 +22,7 @@ curl -X POST 'http://127.0.0.1:8000/api/add/feed' -d \
                 {"feedUrl":"https://github.com/helium/blockchain-http/releases.atom", "handler": "flanker", "nodeFullName": "Helium-http", "nodeName":"hnt-http"},
                 {"feedUrl":"https://github.com/helium/helium-js/tags.atom"},
                 {"feedUrl":"https://github.com/ElrondNetwork/observing-squad/releases.atom", "handler": "flanker", "nodeFullName": "Elrond", "nodeName":"egld"},
+                {"feedUrl":"https://github.com/ElrondNetwork/elrond-config-mainnet/releases.atom", "handler": "flanker", "nodeFullName": "Elrond-Config", "nodeName":"egld-config"},
                 {"feedUrl":"https://github.com/ElrondNetwork/elrond-core-js/releases.atom"},
                 {"feedUrl":"https://github.com/blockstack/stacks-blockchain/releases.atom", "handler": "flanker", "nodeFullName": "Stacks", "nodeName": "stx"},
                 {"feedUrl":"https://github.com/iotexproject/iotex-core/releases.atom", "handler": "flanker", "nodeName": "iotex", "nodeFullName": "Iotex"}, 
