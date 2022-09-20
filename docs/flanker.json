@@ -21,14 +21,15 @@ curl -X POST 'http://127.0.0.1:8000/api/add/feed' -d \
                 {"feedUrl":"https://github.com/helium/blockchain-etl/releases.atom", "handler": "flanker", "nodeFullName": "Helium-etl", "nodeName":"hnt-etl"},
                 {"feedUrl":"https://github.com/helium/blockchain-http/releases.atom", "handler": "flanker", "nodeFullName": "Helium-http", "nodeName":"hnt-http"},
                 {"feedUrl":"https://github.com/helium/helium-js/tags.atom"},
-                {"feedUrl":"https://github.com/ElrondNetwork/observing-squad/releases.atom", "handler": "flanker", "nodeFullName": "Elrond", "nodeName":"egld"},
                 {"feedUrl":"https://github.com/ElrondNetwork/elrond-config-mainnet/releases.atom", "handler": "flanker", "nodeFullName": "Elrond-Config", "nodeName":"egld-config"},
                 {"feedUrl":"https://github.com/ElrondNetwork/elrond-core-js/releases.atom"},
                 {"feedUrl":"https://github.com/blockstack/stacks-blockchain/releases.atom", "handler": "flanker", "nodeFullName": "Stacks", "nodeName": "stx"},
                 {"feedUrl":"https://github.com/iotexproject/iotex-core/releases.atom", "handler": "flanker", "nodeName": "iotex", "nodeFullName": "Iotex"}, 
                 {"feedUrl":"https://github.com/ton-blockchain/ton/releases.atom", "handler": "flanker", "nodeFullName": "toncoin", "nodeName": "ton"},
                 {"feedUrl":"https://github.com/oasisprotocol/oasis-core/releases.atom", "handler": "flanker", "nodeName": "rose", "nodeFullName": "Rose"},
-                {"feedUrl":"https://github.com/oasisprotocol/oasis-rosetta-gateway/releases.atom", "handler": "flanker", "nodeName": "rose-rosetta", "nodeFullName": "Rose Rosetta api"}
+                {"feedUrl":"https://github.com/oasisprotocol/oasis-rosetta-gateway/releases.atom", "handler": "flanker", "nodeName": "rose-rosetta", "nodeFullName": "Rose Rosetta api"},
+                {"feedUrl":"https://github.com/toncenter/ton-http-api/releases.atom", "handler": "flanker", "nodeName": "ton-http-api", "nodeFullName": "ton-http-api"},
+                {"feedUrl":"https://github.com/ton-blockchain/mytonctrl/releases.atom", "handler": "flanker", "nodeName": "ton-mytonctrl", "nodeFullName": "mytonctrl"}
         ]
 }' \
 -H 'Content-Type: application/json'
