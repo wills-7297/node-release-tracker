@@ -3,10 +3,8 @@ curl -X POST 'http://127.0.0.1:8000/api/add/feed' -d \
 	"larkUrl": "https://open.larksuite.com/open-apis/bot/v2/hook/4374b8b5-bd42-4ff1-b020-194e33fa728a",
         "feedUrls": [
                 {"feedUrl":"https://github.com/will-yijinin/test/releases.atom", "handler": "will", "nodeFullName": "will", "nodeName": "will"},
-                {"feedUrl":"https://github.com/stellar/js-stellar-sdk/releases.atom"},
                 {"feedUrl":"https://github.com/crypto-browserify/sha.js/releases.atom"},
                 {"feedUrl":"https://github.com/paritytech/txwrapper-core/releases.atom"},
-                {"feedUrl":"https://github.com/polkadot-js/api/releases.atom"},
                 {"feedUrl":"https://github.com/ripple/ripple-address-codec/releases.atom"},
                 {"feedUrl":"https://github.com/ripple/ripple-binary-codec/releases.atom"},
                 {"feedUrl":"https://github.com/ripple/ripple-keypairs/releases.atom"},
@@ -15,16 +13,11 @@ curl -X POST 'http://127.0.0.1:8000/api/add/feed' -d \
                 {"feedUrl":"https://github.com/stellar/stellar-core/releases.atom", "handler": "will", "nodeFullName": "Stellar Lumens", "nodeName": "xlm"},
                 {"feedUrl":"https://github.com/MikeMcl/bignumber.js/releases.atom"},
                 {"feedUrl":"https://github.com/paritytech/substrate-api-sidecar/releases.atom", "handler": "will", "nodeFullName": "Dot Sidecar", "nodeName": "dot-sidecar"},
-                {"feedUrl":"https://github.com/solana-labs/solana-web3.js/releases.atom"},
                 {"feedUrl":"https://github.com/solana-labs/solana/releases.atom", "handler": "will", "nodeFullName": "Solana", "nodeName": "sol"},
-                {"feedUrl":"https://github.com/Zondax/filecoin-signing-tools/releases.atom"},
-                {"feedUrl":"https://github.com/LinusU/base32-decode/releases.atom"},
-                {"feedUrl":"https://github.com/LinusU/base32-encode/releases.atom"},
                 {"feedUrl":"https://github.com/filecoin-project/lotus/releases.atom", "handler": "will", "nodeFullName": "Filecoin", "nodeName": "fil"},
                 {"feedUrl":"https://github.com/terra-money/core/releases.atom", "handler": "will", "nodeFullName": "Terra", "nodeName": "luna"},
                 {"feedUrl":"https://github.com/terra-money/terra.js/releases.atom"},
                 {"feedUrl":"https://github.com/hashgraph/hedera-mirror-node/releases.atom", "handler": "will", "nodeFullName": "Hedera Hashgraph", "nodeName": "hbar"},
-                {"feedUrl":"https://github.com/hashgraph/hedera-sdk-js/releases.atom"},
                 {"feedUrl":"https://github.com/binance-chain/node-binary/releases.atom", "handler": "will", "nodeFullName": "Binance Chain", "nodeName": "bnb"},
                 {"feedUrl":"https://github.com/icon-project/goloop/releases.atom", "handler": "will", "nodeFullName": "Icon", "nodeName": "icon"},
                 {"feedUrl":"https://github.com/Manta-Network/Manta/releases.atom", "handler": "will", "nodeFullName": "Calamari", "nodeName": "kma"},
@@ -41,7 +34,11 @@ curl -X POST 'http://127.0.0.1:8000/api/add/feed' -d \
                 {"feedUrl":"https://github.com/CaduceusMetaverseProtocol/CMPChain-FullNode/releases.atom", "handler": "will", "nodeFullName": "Caduceus", "nodeName": "cmp"},
                 {"feedUrl":"https://github.com/kon-mainnet/Genesis/releases.atom", "handler": "will", "nodeFullName": "Kon", "nodeName": "kon"},
                 {"feedUrl":"https://github.com/ArweaveTeam/arweave/releases.atom", "handler": "will", "nodeFullName": "Arweave", "nodeName": "ar"},
-                {"feedUrl":"https://github.com/aptos-labs/aptos-core/releases.atom", "handler": "will", "nodeFullName": "Aptos", "nodeName": "aptos"}
+                {"feedUrl":"https://github.com/aptos-labs/aptos-core/releases.atom", "handler": "will", "nodeFullName": "Aptos", "nodeName": "aptos"},
+                {"feedUrl":"https://github.com/terra-rebels/classic/releases.atom", "handler": "will", "nodeFullName": "Terra Classic", "nodeName": "luna-classic"},
+                {"feedUrl":"https://github.com/flare-foundation/go-flare/tags.atom", "handler": "will", "nodeFullName": "Flare", "nodeName": "flare"},
+                {"feedUrl":"https://github.com/AstarNetwork/Astar/releases.atom", "handler": "will", "nodeFullName": "Astar", "nodeName": "astar"},
+                {"feedUrl":"https://github.com/oasysgames/oasys-validator/releases.atom", "handler": "will", "nodeFullName": "Oasys", "nodeName": "oasys"}
         ]
 }' \
 -H 'Content-Type: application/json'

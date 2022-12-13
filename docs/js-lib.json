@@ -1,0 +1,9 @@
+[
+    {"feedUrl":"https://github.com/hashgraph/hedera-sdk-js/releases.atom"},
+    {"feedUrl":"https://github.com/stellar/js-stellar-sdk/releases.atom"},
+    {"feedUrl":"https://github.com/LinusU/base32-decode/releases.atom"},
+    {"feedUrl":"https://github.com/LinusU/base32-encode/releases.atom"},
+    {"feedUrl":"https://github.com/polkadot-js/api/releases.atom"},
+    {"feedUrl":"https://github.com/solana-labs/solana-web3.js/releases.atom"},
+    {"feedUrl":"https://github.com/Zondax/filecoin-signing-tools/releases.atom"}
+]
