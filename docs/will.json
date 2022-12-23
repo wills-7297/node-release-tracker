@@ -20,7 +20,6 @@ curl -X POST 'http://127.0.0.1:8000/api/add/feed' -d \
                 {"feedUrl":"https://github.com/hashgraph/hedera-mirror-node/releases.atom", "handler": "will", "nodeFullName": "Hedera Hashgraph", "nodeName": "hbar"},
                 {"feedUrl":"https://github.com/binance-chain/node-binary/releases.atom", "handler": "will", "nodeFullName": "Binance Chain", "nodeName": "bnb"},
                 {"feedUrl":"https://github.com/icon-project/goloop/releases.atom", "handler": "will", "nodeFullName": "Icon", "nodeName": "icon"},
-                {"feedUrl":"https://github.com/Manta-Network/Manta/releases.atom", "handler": "will", "nodeFullName": "Calamari", "nodeName": "kma"},
                 {"feedUrl":"https://github.com/symbol/symbol-bootstrap/releases.atom", "handler": "will", "nodeFullName": "Symbol", "nodeName": "xym"},
                 {"feedUrl":"https://github.com/NemProject/nem.core/tags.atom", "handler": "will", "nodeFullName": "Xem", "nodeName": "nem"},
                 {"feedUrl":"https://github.com/MinaProtocol/mina/releases.atom", "handler": "will", "nodeFullName": "Mina", "nodeName": "mina"},
