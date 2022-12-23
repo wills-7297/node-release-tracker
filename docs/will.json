@@ -38,7 +38,9 @@ curl -X POST 'http://127.0.0.1:8000/api/add/feed' -d \
                 {"feedUrl":"https://github.com/terra-rebels/classic/releases.atom", "handler": "will", "nodeFullName": "Terra Classic", "nodeName": "luna-classic"},
                 {"feedUrl":"https://github.com/flare-foundation/go-flare/tags.atom", "handler": "will", "nodeFullName": "Flare", "nodeName": "flare"},
                 {"feedUrl":"https://github.com/AstarNetwork/Astar/releases.atom", "handler": "will", "nodeFullName": "Astar", "nodeName": "astar"},
-                {"feedUrl":"https://github.com/oasysgames/oasys-validator/releases.atom", "handler": "will", "nodeFullName": "Oasys", "nodeName": "oasys"}
+                {"feedUrl":"https://github.com/oasysgames/oasys-validator/releases.atom", "handler": "will", "nodeFullName": "Oasys", "nodeName": "oasys"},
+                {"feedUrl":"https://github.com/bnb-chain/node/releases.atom", "handler": "will", "nodeFullName": "Binance Chain", "nodeName": "bnb"},
+                {"feedUrl":"https://github.com/wemixarchive/go-wemix/releases.atom", "handler": "will", "nodeFullName": "Wemix", "nodeName": "wemix"}
         ]
 }' \
 -H 'Content-Type: application/json'
