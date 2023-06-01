@@ -18,8 +18,6 @@ curl -X POST 'http://127.0.0.1:8000/api/add/feed' -d \
                 {"feedUrl":"https://github.com/algorand/indexer/releases.atom", "handler": "flanker", "nodeFullName": "Algorand Indexer", "nodeName":"algo-indexer"},
                 {"feedUrl":"https://github.com/near/near-api-js/releases.atom"},
                 {"feedUrl":"https://github.com/near/nearcore/releases.atom", "handler": "flanker", "nodeFullName": "Near", "nodeName":"near"},
-                {"feedUrl":"https://github.com/helium/blockchain-etl/releases.atom", "handler": "flanker", "nodeFullName": "Helium-etl", "nodeName":"hnt-etl"},
-                {"feedUrl":"https://github.com/helium/blockchain-http/releases.atom", "handler": "flanker", "nodeFullName": "Helium-http", "nodeName":"hnt-http"},
                 {"feedUrl":"https://github.com/helium/helium-js/tags.atom"},
                 {"feedUrl":"https://github.com/ElrondNetwork/elrond-config-mainnet/releases.atom", "handler": "flanker", "nodeFullName": "Elrond-Config", "nodeName":"egld-config"},
                 {"feedUrl":"https://github.com/ElrondNetwork/elrond-core-js/releases.atom"},
