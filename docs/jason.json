@@ -23,7 +23,8 @@ curl -X POST 'http://127.0.0.1:8000/api/add/feed' -d \
                 {"feedUrl":"https://github.com/thetatoken/theta-protocol-ledger/releases.atom", "handler": "jason", "nodeFullName": "Theta Network","nodeName":"theta"},
                 {"feedUrl":"https://github.com/ordinals/ord/releases.atom", "handler": "jason", "nodeFullName": "Ordinal","nodeName":"ordinal"},
                 {"feedUrl":"https://github.com/axelarnetwork/axelar-core/releases.atom", "handler": "jason", "nodeFullName": "Axelar","nodeName":"axelar"},
-                {"feedUrl":"https://github.com/0xPolygonHermez/zkevm-node/releases.atom", "handler": "jason", "nodeFullName": "Zkevm","nodeName":"zkevm"}
+                {"feedUrl":"https://github.com/0xPolygonHermez/zkevm-node/releases.atom", "handler": "jason", "nodeFullName": "Zkevm","nodeName":"zkevm"},
+                {"feedUrl":"https://github.com/XinFinOrg/XinFin-Node/releases.atom", "handler": "jason", "nodeFullName": "XinFin","nodeName":"xdc"}
         ]
 }' \
 -H 'Content-Type: application/json'
