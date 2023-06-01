@@ -27,6 +27,7 @@ curl -X POST 'http://127.0.0.1:8000/api/add/feed' -d \
                 {"feedUrl":"https://github.com/oasisprotocol/oasis-rosetta-gateway/releases.atom", "handler": "flanker", "nodeName": "rose-rosetta", "nodeFullName": "Rose Rosetta api"},
                 {"feedUrl":"https://github.com/toncenter/ton-http-api/releases.atom", "handler": "flanker", "nodeName": "ton-http-api", "nodeFullName": "ton-http-api"},
                 {"feedUrl":"https://github.com/ton-blockchain/mytonctrl/releases.atom", "handler": "flanker", "nodeName": "ton-mytonctrl", "nodeFullName": "mytonctrl"},
+                {"feedUrl":"https://github.com/oasisprotocol/emerald-paratime/releases.atom", "handler": "flanker", "nodeFullName": "Oasis / Erose","nodeName":"erose"},
                 {"feedUrl":"https://github.com/oasisprotocol/oasis-web3-gateway/releases.atom", "handler": "flanker", "nodeName": "oasis", "nodeFullName": "Oasis"}
         ]
 }' \

@@ -18,7 +18,6 @@ curl -X POST 'http://127.0.0.1:8000/api/add/feed' -d \
                 {"feedUrl":"https://github.com/stars-labs/heco-chain/releases.atom", "handler": "jason", "nodeFullName": "Huobi Eco Chain","nodeName":"heco"},
                 {"feedUrl":"https://github.com/harmony-one/harmony/releases.atom", "handler": "jason", "nodeFullName": "Harmony","nodeName":"one"},
                 {"feedUrl":"https://github.com/ethereum-optimism/optimism/releases.atom", "handler": "jason", "nodeFullName": "optimism", "nodeName": "op"},
-                {"feedUrl":"https://github.com/oasisprotocol/emerald-paratime/releases.atom", "handler": "jason", "nodeFullName": "Oasis / Erose","nodeName":"erose"},
                 {"feedUrl":"https://github.com/OffchainLabs/nitro/releases.atom", "handler": "jason", "nodeFullName": "Nitro","nodeName":"nitro"},
                 {"feedUrl":"https://github.com/prysmaticlabs/prysm/releases.atom", "handler": "jason", "nodeFullName": "Eth Prysm","nodeName":"eth-prysm"},
                 {"feedUrl":"https://github.com/thetatoken/theta-protocol-ledger/releases.atom", "handler": "jason", "nodeFullName": "Theta Network","nodeName":"theta"},
