@@ -21,7 +21,8 @@ curl -X POST 'http://127.0.0.1:8000/api/add/feed' -d \
                 {"feedUrl":"https://github.com/oasisprotocol/emerald-paratime/releases.atom", "handler": "jason", "nodeFullName": "Oasis / Erose","nodeName":"erose"},
                 {"feedUrl":"https://github.com/OffchainLabs/nitro/releases.atom", "handler": "jason", "nodeFullName": "Nitro","nodeName":"nitro"},
                 {"feedUrl":"https://github.com/prysmaticlabs/prysm/releases.atom", "handler": "jason", "nodeFullName": "Eth Prysm","nodeName":"eth-prysm"},
-                {"feedUrl":"https://github.com/thetatoken/theta-protocol-ledger/releases.atom", "handler": "jason", "nodeFullName": "Theta Network","nodeName":"theta"}
+                {"feedUrl":"https://github.com/thetatoken/theta-protocol-ledger/releases.atom", "handler": "jason", "nodeFullName": "Theta Network","nodeName":"theta"},
+                {"feedUrl":"https://github.com/ordinals/ord/releases.atom", "handler": "jason", "nodeFullName": "Ordinal","nodeName":"ordinal"}
         ]
 }' \
 -H 'Content-Type: application/json'
