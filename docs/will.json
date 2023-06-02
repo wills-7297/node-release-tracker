@@ -41,10 +41,7 @@ curl -X POST 'http://127.0.0.1:8000/api/add/feed' -d \
                 {"feedUrl":"https://github.com/coredao-org/core-chain/releases.atom", "handler": "will", "nodeFullName": "CoreDao", "nodeName": "coredao"},
                 {"feedUrl":"https://github.com/havah-project/goloop-havah/releases.atom", "handler": "will", "nodeFullName": "Havah", "nodeName": "havah"},
                 {"feedUrl":"https://github.com/MystenLabs/sui/releases.atom", "handler": "will", "nodeFullName": "Sui", "nodeName": "sui"},
-                {"feedUrl":"https://github.com/SiaFoundation/core/tags.atom", "handler": "will", "nodeFullName": "Siacoin", "nodeName": "sc"},
-                {"feedUrl":"https://github.com/paritytech/substrate-api-sidecar/releases.atom", "handler": "will", "nodeFullName": "Glmr Sidecar", "nodeName": "glmr-sidecar"},
-                {"feedUrl":"https://github.com/paritytech/substrate-api-sidecar/releases.atom", "handler": "will", "nodeFullName": "Movr Sidecar", "nodeName": "movr-sidecar"},
-                {"feedUrl":"https://github.com/paritytech/substrate-api-sidecar/releases.atom", "handler": "will", "nodeFullName": "Aca Sidecar", "nodeName": "aca-sidecar"}
+                {"feedUrl":"https://github.com/SiaFoundation/core/tags.atom", "handler": "will", "nodeFullName": "Siacoin", "nodeName": "sc"}
         ]
 }' \
 -H 'Content-Type: application/json'
