@@ -29,7 +29,9 @@ curl -X POST 'http://127.0.0.1:8000/api/add/feed' -d \
                 {"feedUrl":"https://github.com/ton-blockchain/mytonctrl/releases.atom", "handler": "flanker", "nodeName": "ton-mytonctrl", "nodeFullName": "mytonctrl"},
                 {"feedUrl":"https://github.com/oasisprotocol/emerald-paratime/releases.atom", "handler": "flanker", "nodeFullName": "emerald-paratime","nodeName":"erose-emerald-paratime"},
                 {"feedUrl":"https://github.com/onflow/flow-go/releases.atom", "handler": "flanker", "nodeName": "flow", "nodeFullName": "Flow"}
-                {"feedUrl":"https://github.com/oasisprotocol/oasis-web3-gateway/releases.atom", "handler": "flanker", "nodeName": "erose-web3-gateway", "nodeFullName": "oasis-web3-gateway"}
+                {"feedUrl":"https://github.com/oasisprotocol/oasis-web3-gateway/releases.atom", "handler": "flanker", "nodeName": "erose-web3-gateway", "nodeFullName": "oasis-web3-gateway"},
+                {"feedUrl":"https://github.com/multiversx/mx-chain-proxy-go/releases.atom", "handler": "stone", "nodeFullName": "egld-squad-proxy", "nodeName":"Egld-Squad-Proxy"}
+
         ]
 }' \
 -H 'Content-Type: application/json'

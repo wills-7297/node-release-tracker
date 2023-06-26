@@ -36,8 +36,7 @@ curl -X POST 'http://127.0.0.1:8000/api/add/feed' -d \
                 {"feedUrl":"https://github.com/matter-labs/zksync/releases.atom", "handler": "stone", "nodeFullName": "zkSync", "nodeName":"zksync"},
                 {"feedUrl":"https://github.com/AntelopeIO/leap/releases.atom", "handler": "stone", "nodeFullName": "EOS", "nodeName":"eos"},
                 {"feedUrl":"https://github.com/step-app-fi/step-node/tags.atom", "handler": "stone", "nodeFullName": "Fitfi", "nodeName":"fitfi"},
-                {"feedUrl":"https://github.com/ethereumpow/go-ethereum/releases.atom", "handler": "stone", "nodeFullName": "Ethw", "nodeName":"ethw"},
-                {"feedUrl":"https://github.com/multiversx/mx-chain-proxy-go/releases.atom", "handler": "stone", "nodeFullName": "egld-squad-proxy", "nodeName":"Egld-Squad-Proxy"}
+                {"feedUrl":"https://github.com/ethereumpow/go-ethereum/releases.atom", "handler": "stone", "nodeFullName": "Ethw", "nodeName":"ethw"}
         ]
 }' \
 -H 'Content-Type: application/json'
