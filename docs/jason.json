@@ -26,7 +26,9 @@ curl -X POST 'http://127.0.0.1:8000/api/add/feed' -d \
                 {"feedUrl":"https://github.com/axelarnetwork/axelar-core/releases.atom", "handler": "jason", "nodeFullName": "Axelar","nodeName":"axelar"},
                 {"feedUrl":"https://github.com/0xPolygonHermez/zkevm-node/releases.atom", "handler": "jason", "nodeFullName": "Zkevm","nodeName":"zkevm"},
                 {"feedUrl":"https://github.com/eqlabs/pathfinder/releases.atom", "handler": "jason", "nodeFullName": "Starknet","nodeName":"starknet"},
-                {"feedUrl":"https://github.com/XinFinOrg/XDPoSChain/releases.atom", "handler": "jason", "nodeFullName": "XinFin","nodeName":"xdc"}
+                {"feedUrl":"https://github.com/XinFinOrg/XDPoSChain/releases.atom", "handler": "jason", "nodeFullName": "XinFin","nodeName":"xdc"},
+                {"feedUrl":"https://github.com/omtch/omega-chain/releases.atom", "handler": "jason", "nodeFullName": "Omega","nodeName":"omega"},
+                {"feedUrl":"https://github.com/matter-labs/zksync-era/releases.atom", "handler": "jason", "nodeFullName": "zksync-era","nodeName":"zksyncera"}
         ]
 }' \
 -H 'Content-Type: application/json'
