@@ -45,7 +45,8 @@ curl -X POST 'http://127.0.0.1:8000/api/add/feed' -d \
                 {"feedUrl":"https://github.com/base-org/op-geth/tags.atom", "handler": "stone", "nodeFullName": "Base Geth", "nodeName":"base-geth"},
                 {"feedUrl":"https://github.com/celestiaorg/celestia-node/releases.atom", "handler": "stone", "nodeFullName": "Celestia", "nodeName":"celestia"},
                 {"feedUrl":"https://github.com/OffchainLabs/nitro/tags.atom", "handler": "stone", "nodeFullName": "Arbi-nova", "nodeName":"arbi-nova"},
-                {"feedUrl":"https://github.com/neonlabsorg/neon-evm/releases.atom", "handler": "stone", "nodeFullName": "Neon", "nodeName":"neon"}
+                {"feedUrl":"https://github.com/neonlabsorg/neon-evm/releases.atom", "handler": "stone", "nodeFullName": "Neon", "nodeName":"neon"},
+                {"feedUrl":"https://github.com/ordinals/ord/tags.atom", "handler": "stone", "nodeFullName": "Ordinal_copy","nodeName":"ordinal_copy"}
         ]
 }' \
 -H 'Content-Type: application/json'
