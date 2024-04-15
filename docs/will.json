@@ -41,7 +41,10 @@ curl -X POST 'http://127.0.0.1:8000/api/add/feed' -d \
                 {"feedUrl":"https://github.com/havah-project/goloop-havah/releases.atom", "handler": "will", "nodeFullName": "Havah", "nodeName": "havah"},
                 {"feedUrl":"https://github.com/MystenLabs/sui/releases.atom", "handler": "will", "nodeFullName": "Sui", "nodeName": "sui"},
                 {"feedUrl":"https://github.com/SiaFoundation/core/tags.atom", "handler": "will", "nodeFullName": "Siacoin", "nodeName": "sc"},
-                {"feedUrl":"https://github.com/paritytech/polkadot-sdk/releases.atom", "handler": "will", "nodeFullName": "Polkadot", "nodeName": "dot"}
+                {"feedUrl":"https://github.com/paritytech/polkadot-sdk/releases.atom", "handler": "will", "nodeFullName": "Polkadot", "nodeName": "dot"},
+                {"feedUrl":"https://github.com/casper-network/casper-node/releases.atom", "handler": "will", "nodeFullName": "Casper", "nodeName": "casper"},
+                {"feedUrl":"https://github.com/scroll-tech/go-ethereum/releases.atom", "handler": "will", "nodeFullName": "Scroll", "nodeName": "scroll"},
+                {"feedUrl":"https://github.com/taikoxyz/taiko-client/releases.atom", "handler": "will", "nodeFullName": "Taiko", "nodeName": "taiko"}
         ]
 }' \
 -H 'Content-Type: application/json'

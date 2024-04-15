@@ -30,7 +30,13 @@ curl -X POST 'http://127.0.0.1:8000/api/add/feed' -d \
                 {"feedUrl":"https://github.com/oasisprotocol/emerald-paratime/releases.atom", "handler": "flanker", "nodeFullName": "emerald-paratime","nodeName":"erose-emerald-paratime"},
                 {"feedUrl":"https://github.com/onflow/flow-go/releases.atom", "handler": "flanker", "nodeName": "flow", "nodeFullName": "Flow"}
                 {"feedUrl":"https://github.com/oasisprotocol/oasis-web3-gateway/releases.atom", "handler": "flanker", "nodeName": "erose-web3-gateway", "nodeFullName": "oasis-web3-gateway"},
-                {"feedUrl":"https://github.com/multiversx/mx-chain-proxy-go/releases.atom", "handler": "flanker", "nodeFullName": "egld-squad-proxy", "nodeName":"Egld-Squad-Proxy"}
+                {"feedUrl":"https://github.com/multiversx/mx-chain-proxy-go/releases.atom", "handler": "flanker", "nodeFullName": "egld-squad-proxy", "nodeName":"Egld-Squad-Proxy"},
+                {"feedUrl":"https://github.com/zeta-chain/node/releases.atom", "handler": "flanker", "nodeName":"zeta-cosmos", "nodeFullName": "Zeta Cosmos"},
+                {"feedUrl":"https://github.com/Lambda256/luniverse-poa/releases.atom", "handler": "flanker", "nodeName":"luk", "nodeFullName": "Luniverse"},
+                {"feedUrl":"https://github.com/dominant-strategies/go-quai/tags.atom", "handler": "flanker", "nodeName":"quai", "nodeFullName": "Quai"},
+                {"feedUrl":"https://github.com/dymensionxyz/dymension/releases.atom", "handler": "flanker", "nodeName":"dym", "nodeFullName": "Dynmension"},
+                {"feedUrl":"https://github.com/NibiruChain/nibiru/releases.atom", "handler": "flanker", "nodeName":"nibi", "nodeFullName": "Nibiru"},
+                {"feedUrl":"https://github.com/ZKFair/zkfair-cdk-validium-node/releases.atom", "handler": "flanker", "nodeName":"zkfair", "nodeFullName": "ZKFair"}
 
         ]
 }' \
