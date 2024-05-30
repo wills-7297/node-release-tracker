@@ -29,7 +29,9 @@ curl -X POST 'http://127.0.0.1:8000/api/add/feed' -d \
                 {"feedUrl":"https://github.com/XinFinOrg/XDPoSChain/releases.atom", "handler": "jason", "nodeFullName": "XinFin","nodeName":"xdc"},
                 {"feedUrl":"https://github.com/omtch/omega-chain/releases.atom", "handler": "jason", "nodeFullName": "Omega","nodeName":"omega"},
                 {"feedUrl":"https://github.com/matter-labs/zksync-era/releases.atom", "handler": "jason", "nodeFullName": "zksync-era","nodeName":"zksyncera"},
-                {"feedUrl":"https://github.com/sei-protocol/sei-chain/releases.atom", "handler": "jason", "nodeFullName": "Sei","nodeName":"sei"}
+                {"feedUrl":"https://github.com/sei-protocol/sei-chain/releases.atom", "handler": "jason", "nodeFullName": "Sei","nodeName":"sei"},
+                {"feedUrl":"https://github.com/BounceBit-Labs/node/releases.atom", "handler": "jason", "nodeFullName": "BounceBit","nodeName":"bouncebit"},
+                {"feedUrl":"https://github.com/blast-io/blast/releases.atom", "handler": "jason", "nodeFullName": "Blast","nodeName":"blast"}
         ]
 }' \
 -H 'Content-Type: application/json'
