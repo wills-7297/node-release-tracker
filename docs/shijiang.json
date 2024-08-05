@@ -2,19 +2,10 @@ curl -X POST 'http://127.0.0.1:8000/api/add/feed' -d \
 '{
 	"larkUrl": "https://open.larksuite.com/open-apis/bot/v2/hook/0bed0bb3-df7e-4a10-ab57-684182ef0b41",
         "feedUrls": [
-                {"feedUrl":"https://github.com/blockstack/stacks-blockchain/releases.atom", "handler": "shijiang", "nodeFullName": "Stacks", "nodeName": "stx"},
-                {"feedUrl":"https://github.com/SiaFoundation/siad/releases.atom", "handler": "shijiang", "nodeFullName": "Siacoin", "nodeName": "sia"},
-                {"feedUrl":"https://github.com/kadena-io/chainweb-node/releases.atom", "handler": "shijiang", "nodeFullName": "Kadena", "nodeName": "kda"},
-                {"feedUrl":"https://github.com/scrtlabs/SecretNetwork/releases.atom", "handler": "shijiang", "nodeFullName": "Secret", "nodeName": "scrt"},
                 {"feedUrl":"https://github.com/MetisProtocol/mvm/releases.atom", "handler": "shijiang", "nodeFullName": "MetisDAO", "nodeName": "metis"},
-                {"feedUrl":"https://github.com/oasisprotocol/oasis-core/releases.atom", "handler": "shijiang", "nodeName": "rose", "nodeFullName": "Rose"},
-                {"feedUrl":"https://github.com/oasisprotocol/oasis-rosetta-gateway/releases.atom", "handler": "shijiang", "nodeName": "rose-rosetta", "nodeFullName": "Rose Rosetta api"}, 
-                {"feedUrl":"https://github.com/worldwide-asset-exchange/wax-blockchain/releases.atom", "handler": "shijiang", "nodeName": "wax", "nodeFullName": "Worldwide Asset Exchange"}, 
                 {"feedUrl":"https://github.com/tharsis/evmos/releases.atom", "handler": "shijiang", "nodeName": "evmos", "nodeFullName": "Evmos"}, 
                 {"feedUrl":"https://github.com/iotexproject/iotex-core/releases.atom", "handler": "shijiang", "nodeName": "iotex", "nodeFullName": "Iotex"}, 
-                {"feedUrl":"https://github.com/MetisProtocol/l2geth/tags.atom", "handler": "shijiang", "nodeName": "metisgeth", "nodeFullName": "Metisgeth"},
-                {"feedUrl":"https://github.com/ethereum-optimism/optimism/releases.atom", "handler": "shijiang", "nodeFullName": "optimism", "nodeName": "op"},
-                {"feedUrl":"https://github.com/ton-blockchain/ton/releases.atom", "handler": "shijiang", "nodeFullName": "toncoin", "nodeName": "ton"}
+                {"feedUrl":"https://github.com/MetisProtocol/l2geth/tags.atom", "handler": "shijiang", "nodeName": "metisgeth", "nodeFullName": "Metisgeth"}
         ]
 }' \
 -H 'Content-Type: application/json'
