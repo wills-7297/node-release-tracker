@@ -39,6 +39,9 @@ curl -X POST 'http://127.0.0.1:8000/api/add/feed' -d \
                 {"feedUrl":"https://github.com/scrtlabs/SecretNetwork/releases.atom", "handler": "stone", "nodeFullName": "Secret", "nodeName": "scrt"},
                 {"feedUrl":"https://github.com/classic-terra/core/releases.atom", "handler": "stone", "nodeFullName": "Terra Classic", "nodeName": "luna-classic"},
                 {"feedUrl":"https://github.com/SiaFoundation/core/tags.atom", "handler": "stone", "nodeFullName": "Siacoin", "nodeName": "sc"},
+                {"feedUrl":"https://github.com/axelarnetwork/axelar-core/releases.atom", "handler": "stone", "nodeFullName": "Axelar","nodeName":"axelar"},
+                {"feedUrl":"https://github.com/sei-protocol/sei-chain/releases.atom", "handler": "stone", "nodeFullName": "Sei","nodeName":"sei"},
+                {"feedUrl":"https://github.com/dydxprotocol/v4-chain/releases.atom", "handler": "stone", "nodeFullName": "Dydx","nodeName":"dydx"},
 
         ]
 }' \
