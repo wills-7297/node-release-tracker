@@ -2,17 +2,14 @@ curl -X POST 'http://127.0.0.1:8000/api/add/feed' -d \
 '{
 	"larkUrl": "https://open.larksuite.com/open-apis/bot/v2/hook/5264da6c-181c-4087-bf99-0200ca216ec7",
         "feedUrls": [
-                {"feedUrl":"https://github.com/tronprotocol/java-tron/releases.atom", "handler": "flanker", "nodeFullName": "Tron", "nodeName":"tron"},
                 {"feedUrl":"https://github.com/tronscan/tronscan-node-client/releases.atom"},
                 {"feedUrl":"https://github.com/emn178/js-sha3/releases.atom"},
                 {"feedUrl":"https://github.com/cryptocoinjs/secp256k1-node/releases.atom"},
                 {"feedUrl":"https://github.com/dfinity/rosetta-client/releases.atom", "handler": "flanker", "nodeFullName": "ICP", "nodeName":"icp"},
-                {"feedUrl":"https://github.com/klaytn/klaytn/releases.atom", "handler": "flanker", "nodeFullName": "Klaytn", "nodeName":"klay"},
                 {"feedUrl":"https://github.com/serokell/tezos-packaging/releases.atom", "handler": "flanker", "nodeFullName": "Tezos", "nodeName":"xtz"},
                 {"feedUrl":"https://gitlab.com/tezos/tezos/-/tags?format=atom"},
                 {"feedUrl":"https://github.com/onflow/fcl-js/releases.atom"},
                 {"feedUrl":"https://github.com/ava-labs/avalanchejs/releases.atom"},
-                {"feedUrl":"https://github.com/ava-labs/avalanchego/releases.atom", "handler": "flanker", "nodeFullName": "Avalanche", "nodeName":"ava"},
                 {"feedUrl":"https://github.com/algorand/js-algorand-sdk/releases.atom"},
                 {"feedUrl":"https://github.com/algorand/go-algorand/releases.atom", "handler": "flanker", "nodeFullName": "Algorand", "nodeName":"algo"},
                 {"feedUrl":"https://github.com/algorand/indexer/releases.atom", "handler": "flanker", "nodeFullName": "Algorand Indexer", "nodeName":"algo-indexer"},
@@ -27,17 +24,14 @@ curl -X POST 'http://127.0.0.1:8000/api/add/feed' -d \
                 {"feedUrl":"https://github.com/oasisprotocol/oasis-rosetta-gateway/releases.atom", "handler": "flanker", "nodeName": "rose-rosetta", "nodeFullName": "Rose Rosetta Gateway"},
                 {"feedUrl":"https://github.com/toncenter/ton-http-api/releases.atom", "handler": "flanker", "nodeName": "ton-http-api", "nodeFullName": "ton-http-api"},
                 {"feedUrl":"https://github.com/ton-blockchain/mytonctrl/releases.atom", "handler": "flanker", "nodeName": "ton-mytonctrl", "nodeFullName": "mytonctrl"},
-                {"feedUrl":"https://github.com/oasisprotocol/emerald-paratime/releases.atom", "handler": "flanker", "nodeFullName": "emerald-paratime","nodeName":"erose-emerald-paratime"},
                 {"feedUrl":"https://github.com/onflow/flow-go/releases.atom", "handler": "flanker", "nodeName": "flow", "nodeFullName": "Flow"}
-                {"feedUrl":"https://github.com/oasisprotocol/oasis-web3-gateway/releases.atom", "handler": "flanker", "nodeName": "erose-web3-gateway", "nodeFullName": "oasis-web3-gateway"},
                 {"feedUrl":"https://github.com/multiversx/mx-chain-proxy-go/releases.atom", "handler": "flanker", "nodeFullName": "egld-squad-proxy", "nodeName":"Egld-Squad-Proxy"},
-                {"feedUrl":"https://github.com/zeta-chain/node/releases.atom", "handler": "flanker", "nodeName":"zeta-cosmos", "nodeFullName": "Zeta Cosmos"},
-                {"feedUrl":"https://github.com/Lambda256/luniverse-poa/releases.atom", "handler": "flanker", "nodeName":"luk", "nodeFullName": "Luniverse"},
                 {"feedUrl":"https://github.com/dominant-strategies/go-quai/tags.atom", "handler": "flanker", "nodeName":"quai", "nodeFullName": "Quai"},
-                {"feedUrl":"https://github.com/dymensionxyz/dymension/releases.atom", "handler": "flanker", "nodeName":"dym", "nodeFullName": "Dynmension"},
-                {"feedUrl":"https://github.com/NibiruChain/nibiru/releases.atom", "handler": "flanker", "nodeName":"nibi", "nodeFullName": "Nibiru"},
-                {"feedUrl":"https://github.com/ZKFair/zkfair-cdk-validium-node/releases.atom", "handler": "flanker", "nodeName":"zkfair", "nodeFullName": "ZKFair"}
-
+                {"feedUrl":"https://github.com/aptos-labs/aptos-core/releases.atom", "handler": "flanker", "nodeFullName": "Aptos", "nodeName": "aptos"},
+                {"feedUrl":"https://github.com/worldwide-asset-exchange/wax-blockchain/releases.atom", "handler": "flanker", "nodeName": "wax", "nodeFullName": "Worldwide Asset Exchange"},
+                {"feedUrl":"https://github.com/AntelopeIO/leap/releases.atom", "handler": "flanker", "nodeFullName": "EOS", "nodeName":"eos"},
+                {"feedUrl":"https://github.com/kaspanet/kaspad/releases.atom", "handler": "flanker", "nodeFullName": "Kaspad", "nodeName":"kaspad"},
+                {"feedUrl":"https://github.com/wavesplatform/Waves/releases.atom", "handler": "flanker", "nodeFullName": "Waves", "nodeName":"waves"}
         ]
 }' \
 -H 'Content-Type: application/json'

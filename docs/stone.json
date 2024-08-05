@@ -42,7 +42,10 @@ curl -X POST 'http://127.0.0.1:8000/api/add/feed' -d \
                 {"feedUrl":"https://github.com/axelarnetwork/axelar-core/releases.atom", "handler": "stone", "nodeFullName": "Axelar","nodeName":"axelar"},
                 {"feedUrl":"https://github.com/sei-protocol/sei-chain/releases.atom", "handler": "stone", "nodeFullName": "Sei","nodeName":"sei"},
                 {"feedUrl":"https://github.com/dydxprotocol/v4-chain/releases.atom", "handler": "stone", "nodeFullName": "Dydx","nodeName":"dydx"},
-
+                {"feedUrl":"https://github.com/ava-labs/avalanchego/releases.atom", "handler": "stone", "nodeFullName": "Avalanche", "nodeName":"ava"},
+                {"feedUrl":"https://github.com/zeta-chain/node/releases.atom", "handler": "stone", "nodeName":"zeta-cosmos", "nodeFullName": "Zeta Cosmos"},
+                {"feedUrl":"https://github.com/dymensionxyz/dymension/releases.atom", "handler": "stone", "nodeName":"dym", "nodeFullName": "Dynmension"},
+                {"feedUrl":"https://github.com/NibiruChain/nibiru/releases.atom", "handler": "stone", "nodeName":"nibi", "nodeFullName": "Nibiru"}
         ]
 }' \
 -H 'Content-Type: application/json'
