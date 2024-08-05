@@ -9,7 +9,6 @@ curl -X POST 'http://127.0.0.1:8000/api/add/feed' -d \
                 {"feedUrl":"https://github.com/serokell/tezos-packaging/releases.atom", "handler": "flanker", "nodeFullName": "Tezos", "nodeName":"xtz"},
                 {"feedUrl":"https://gitlab.com/tezos/tezos/-/tags?format=atom"},
                 {"feedUrl":"https://github.com/onflow/fcl-js/releases.atom"},
-                {"feedUrl":"https://github.com/ava-labs/avalanchejs/releases.atom"},
                 {"feedUrl":"https://github.com/algorand/js-algorand-sdk/releases.atom"},
                 {"feedUrl":"https://github.com/algorand/go-algorand/releases.atom", "handler": "flanker", "nodeFullName": "Algorand", "nodeName":"algo"},
                 {"feedUrl":"https://github.com/algorand/indexer/releases.atom", "handler": "flanker", "nodeFullName": "Algorand Indexer", "nodeName":"algo-indexer"},

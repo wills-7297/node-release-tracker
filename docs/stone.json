@@ -11,10 +11,7 @@ curl -X POST 'http://127.0.0.1:8000/api/add/feed' -d \
                 {"feedUrl":"https://github.com/Emurgo/cardano-serialization-lib/releases.atom"},	
                 {"feedUrl":"https://github.com/input-output-hk/cardano-rosetta/releases.atom", "handler": "stone", "nodeFullName": "Cardano-Rosetta", "nodeName":"ada-rosetta"},
                 {"feedUrl":"https://github.com/bitcoin-cash-node/bitcoin-cash-node/releases.atom", "handler": "stone", "nodeFullName": "Bitcoin cash", "nodeName":"bch"},
-                {"feedUrl":"https://github.com/OmniLayer/omnicore/releases.atom", "handler": "stone", "nodeFullName": "Omni", "nodeName":"omni"}, // delete
                 {"feedUrl":"https://github.com/bitcoinjs/bech32/releases.atom"},	
-                {"feedUrl":"https://github.com/wavesplatform/waves-transactions/releases.atom"},	
-                {"feedUrl":"https://github.com/wavesplatform/ts-lib-crypto/releases.atom"},	
                 {"feedUrl":"https://github.com/decred/dcrd/releases.atom", "handler": "stone", "nodeFullName": "Decred", "nodeName":"dcr"},
                 {"feedUrl":"https://github.com/decredjs/decredjs-lib/releases.atom"},	
                 {"feedUrl":"https://github.com/DigiByte-Core/digibyte/releases.atom", "handler": "stone", "nodeFullName": "Digibyte", "nodeName":"dgb"},
