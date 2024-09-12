@@ -1,0 +1,36 @@
+curl -X POST 'http://127.0.0.1:8000/api/add/feed' -d \
+'{
+	"larkUrl": "https://open.larksuite.com/open-apis/bot/v2/hook/5264da6c-181c-4087-bf99-0200ca216ec7",
+        "feedUrls": [
+                {"feedUrl":"https://github.com/tronscan/tronscan-node-client/releases.atom"},
+                {"feedUrl":"https://github.com/emn178/js-sha3/releases.atom"},
+                {"feedUrl":"https://github.com/cryptocoinjs/secp256k1-node/releases.atom"},
+                {"feedUrl":"https://github.com/dfinity/rosetta-client/releases.atom", "handler": "george", "nodeFullName": "ICP", "nodeName":"icp"},
+                {"feedUrl":"https://github.com/serokell/tezos-packaging/releases.atom", "handler": "george", "nodeFullName": "Tezos", "nodeName":"xtz"},
+                {"feedUrl":"https://gitlab.com/tezos/tezos/-/tags?format=atom"},
+                {"feedUrl":"https://github.com/onflow/fcl-js/releases.atom"},
+                {"feedUrl":"https://github.com/algorand/js-algorand-sdk/releases.atom"},
+                {"feedUrl":"https://github.com/algorand/go-algorand/releases.atom", "handler": "george", "nodeFullName": "Algorand", "nodeName":"algo"},
+                {"feedUrl":"https://github.com/algorand/indexer/releases.atom", "handler": "george", "nodeFullName": "Algorand Indexer", "nodeName":"algo-indexer"},
+                {"feedUrl":"https://github.com/near/near-api-js/releases.atom"},
+                {"feedUrl":"https://github.com/near/nearcore/releases.atom", "handler": "george", "nodeFullName": "Near", "nodeName":"near"},
+                {"feedUrl":"https://github.com/helium/helium-js/tags.atom"},
+                {"feedUrl":"https://github.com/ElrondNetwork/elrond-config-mainnet/releases.atom", "handler": "george", "nodeFullName": "Elrond-Config", "nodeName":"egld-config"},
+                {"feedUrl":"https://github.com/ElrondNetwork/elrond-core-js/releases.atom"},
+                {"feedUrl":"https://github.com/blockstack/stacks-blockchain/releases.atom", "handler": "george", "nodeFullName": "Stacks", "nodeName": "stx"},
+                {"feedUrl":"https://github.com/ton-blockchain/ton/releases.atom", "handler": "george", "nodeFullName": "toncoin", "nodeName": "ton"},
+                {"feedUrl":"https://github.com/oasisprotocol/oasis-core/releases.atom", "handler": "george", "nodeName": "rose", "nodeFullName": "Rose"},
+                {"feedUrl":"https://github.com/oasisprotocol/oasis-rosetta-gateway/releases.atom", "handler": "george", "nodeName": "rose-rosetta", "nodeFullName": "Rose Rosetta Gateway"},
+                {"feedUrl":"https://github.com/toncenter/ton-http-api/releases.atom", "handler": "george", "nodeName": "ton-http-api", "nodeFullName": "ton-http-api"},
+                {"feedUrl":"https://github.com/ton-blockchain/mytonctrl/releases.atom", "handler": "george", "nodeName": "ton-mytonctrl", "nodeFullName": "mytonctrl"},
+                {"feedUrl":"https://github.com/onflow/flow-go/releases.atom", "handler": "george", "nodeName": "flow", "nodeFullName": "Flow"}
+                {"feedUrl":"https://github.com/multiversx/mx-chain-proxy-go/releases.atom", "handler": "george", "nodeFullName": "egld-squad-proxy", "nodeName":"Egld-Squad-Proxy"},
+                {"feedUrl":"https://github.com/dominant-strategies/go-quai/tags.atom", "handler": "george", "nodeName":"quai", "nodeFullName": "Quai"},
+                {"feedUrl":"https://github.com/aptos-labs/aptos-core/releases.atom", "handler": "george", "nodeFullName": "Aptos", "nodeName": "aptos"},
+                {"feedUrl":"https://github.com/worldwide-asset-exchange/wax-blockchain/releases.atom", "handler": "george", "nodeName": "wax", "nodeFullName": "Worldwide Asset Exchange"},
+                {"feedUrl":"https://github.com/AntelopeIO/leap/releases.atom", "handler": "george", "nodeFullName": "EOS", "nodeName":"eos"},
+                {"feedUrl":"https://github.com/kaspanet/kaspad/releases.atom", "handler": "george", "nodeFullName": "Kaspad", "nodeName":"kaspad"},
+                {"feedUrl":"https://github.com/wavesplatform/Waves/releases.atom", "handler": "george", "nodeFullName": "Waves", "nodeName":"waves"}
+        ]
+}' \
+-H 'Content-Type: application/json'
